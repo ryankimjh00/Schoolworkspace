@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<ul>
+    <li>블록 박스와 인라인 박스
+        <ul>
+            <li>블록 박스는 새 라인에서 시작. 왼쪽에서 오른쪽 끝까지 전부 점유</li>
+            <li>인라인 박스는 블럭 안에 배치. 앞에 다른 태그 배치 가능</li>
+            <li><code>&lt;div&gt;</code></li>
+        </ul>
+    </li>
+    <li>박스의 유형 제어: display
+        <ul>
+            <li><code>display: inline</code>, <code>display: block</code>, <code>display: inline-block</code></li>
+        </ul>
+    </li>
+    <li>박스의 배치
+        <ul>
+            <li>상대 배치 <code>position: relative</code>
+                <ul>
+                    <li>normal flow의 <strong>기본 위치</strong>에서 left, top, bottom, right 프로퍼티의 값만큼 이동한 <strong>상대
+                        위치</strong>에 배치
+                    </li>
+                </ul>
+            </li>
+            <li>절대 배치 <code>position: absolute</code></li>
+            <li>브라우저 하단 오른쪽에 고정 배치 <code>position: fixed</code></li>
+            <li><code>float: right</code>로 브라우저의 오른편에 항상 배치</li>
+            <li><code>z-index</code>로 겹쳐서 쌓기
+                <ul>
+                    <li>z-index의 값에 따라 위, 아래가 결정됨</li>
+                </ul>
+            </li>
+            <li><code>visibility</code>로 텍스트 숨기기</li>
+            <li><code>overflow</code> 프로퍼티 활용
+                <ul>
+                    <li>넘치는 글자들의 속성을 <code>hidden, visible, scroll</code>로 결정</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>리스트 꾸미기
+        <ul>
+            <li>리스트의 모양을 꾸미는 프로퍼티
+                <ul>
+                    <li>list-style-type</li>
+                    <li>list-style-image</li>
+                    <li>list-style-position</li>
+                    <li>list-style로 단축 프로퍼티 사용 가능</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>표 테두리 제어 <code>border</code>
+        <ul>
+            <li>border-collapse: collapse 중복된 테두리 합치기</li>
+        </ul>
+    </li>
+    <li>셀 크기 제어 <code>width, height</code></li>
+    <li>배경색과 테두리 효과
+        <ul>
+            <li><code>backgound</code>, <code>border-bottom</code></li>
+            <li>짝수만 변경
+                <ul>
+                    <li><code>tbody tr:nth-child(even){background: aliceblue}</code></li>
+                </ul>
+            </li>
+            <li>마우스 올리면 변경
+                <ul>
+                    <li><code>tbody tr:hover{background: pink}</code></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>폼 꾸미기
+        <ul>
+            <li><code>input[type=text]</code>로 폼 요소의 글자 색 지정(<code>placeholder로 기본 텍스트 정의 가능</code>)</li>
+            <li><code>input[type=text]</code>로 폼 요소의 테두리 만들기</li>
+            <li><code>input[type=text]:hover</code>로 마우스를 올렸을때 효과 줄 수 있음</li>
+            <li><code>input[type=text]:focus</code>로 클릭하면 효과를 줄 수 있음</li>
+        </ul>
+    </li>
+    <li>CSS3 스타일로 태그에 동적 변화 만들기
+        <ul>
+            <li>HTML 태그의 모양 변화를 시간 단위로 설정</li>
+            <li>애니메이션 코딩 작업
+                <ul>
+                    <li><code>@keyframes</code>로 HTML 태그의 시간별 모양 변화 만들기</li>
+                    <li><code>@keyframes textColorAnimation{0%{color:blue;} 30%{color:red;}}</code>로 시간별 텍스트 색상 변화를 줄 수
+                        있음
+                        <ul>
+                            <li>span속성에 <code>animation-name: textColorAnimation; animation-duration: 5s;
+                                animation-iteration-count: 1;</code></li>
+                            <li><code>@keyframes bomb</code>으로 확대 축소 효과</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>transform에 사용 가능한 2차원 변환 함수
+                <ul>
+                    <li><code>translate(x,y), translateX(n), scale(w,h), rotate(angle), skew(x-angle, y-angle</code>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>
