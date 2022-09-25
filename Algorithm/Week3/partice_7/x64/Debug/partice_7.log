@@ -1,0 +1,10 @@
+﻿  main.c
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\Week3\partice_7\main.c(38,21): error C2440: '함수': 'Line'에서 'Line *'(으)로 변환할 수 없습니다.
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\Week3\partice_7\main.c(38,15): warning C4024: 'shapePrint': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\Week3\partice_7\main.c(38,31): error C2440: '함수': 'Circle'에서 'int'(으)로 변환할 수 없습니다.
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\Week3\partice_7\main.c(38,23): warning C4024: 'shapePrint': 형식 및 실제 매개 변수 2의 형식이 서로 다릅니다.
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\Week3\partice_7\main.c(38,4): error C2198: 'shapePrint': 호출에 인수가 너무 적습니다.
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\Week3\partice_7\main.c(45,3): warning C4013: 'system'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\Week3\partice_7\main.c(51,22): warning C4028: 정식 매개 변수 1이(가) 선언과 다릅니다.
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\Week3\partice_7\main.c(51,35): warning C4028: 정식 매개 변수 2이(가) 선언과 다릅니다.
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\Week3\partice_7\main.c(51,43): warning C4029: 선언된 정식 매개 변수 목록이 정의와 다릅니다.
