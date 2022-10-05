@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<h2 id="-">자바스크립트 언어</h2>
+<ul>
+    <li>역할
+        <ul>
+            <li>사용자의 입력 및 계산</li>
+            <li>브라우저 제어</li>
+            <li>웹 페이지 내용 및 모양의 동적 제어</li>
+            <li>웹 서버와의 통신</li>
+            <li>웹 어플리케이션 작성</li>
+        </ul>
+    </li>
+    <li>코드의 위치
+        <ul>
+            <li><code>&lt;script&gt;&lt;/script&gt;</code> 태그에 작성</li>
+            <li>HTML 태그의 <strong>이벤트 리스너</strong>에 자바 스크립트 코드 작성</li>
+        </ul>
+    </li>
+    <li>자바스크립트 코드 파일 저장</li>
+    <li>여러 웹페이지에서 불러서 사용
+        <ul>
+            <li>웹 페이지마다 중복 작성 불필요</li>
+        </ul>
+    </li>
+    <li>식별자
+        <ul>
+            <li>자바스크립트 프로그램의 변수, 상수, 함수의 이름</li>
+            <li>식별자를 만드는 규칙</li>
+        </ul>
+    </li>
+    <li>문장
+        <ul>
+            <li>자바스크립트 프로그램의 기본 단위는 ; 사용</li>
+        </ul>
+    </li>
+    <li>데이터 타입
+        <ul>
+            <li>자바스크립트 언어에서 다루는 데이터 종류
+                <ul>
+                    <li>숫자, 논리, 문자열, 객체 레퍼런스, null</li>
+                </ul>
+            </li>
+            <li>특징: 자바스크립트에는 &#39; &#39;, &quot; &quot; 구분 안함</li>
+            <li>변수
+                <ul>
+                    <li>javascript 프로그램이 실행중에 <strong>데이터를 저장하는 공간</strong></li>
+                    <li>선언: 변수 이름을 정하고 저장 공간 할당, var, let(var의 문제점을 해소), 타입설정X</li>
+                    <li>let: 동일한 변수 재선언 불가, 블록 내로 제한</li>
+                </ul>
+            </li>
+            <li>상수
+                <ul>
+                    <li>선언: const 키워드 이용, <strong>값을 바꾸지 못함</strong></li>
+                    <li>재선언 불가, 블록범위에서만 사용</li>
+                    <li>literal: 데이터 값 자체
+                        <ul>
+                            <li>문자열 리터 문자열 내의 문자열 <code>&lt;p onmouseover=&quot;document.body.style.color = &#39;brown&#39;&quot;</code>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>변수의 사용 범위와 life
+                <ul>
+                    <li>global, local, block(<strong>let</strong>으로 if, while, for 등 블록 내에 선언)</li>
+                    <li>this로 전역변수 접근: local 과 global의 이름이 같을때(global에 접근할떄: this.전역변수)</li>
+                </ul>
+            </li>
+            <li>산술 연산
+                <ul>
+                    <li>증감 연산자: a++, a--, ++a, --a</li>
+                    <li>대입 연산: a+= b ...</li>
+                    <li>비교 연산(true/false)</li>
+                    <li>논리 연산: AND, OR, NOT</li>
+                    <li>조건 연산: <code>condition ? expT: expF</code> condition이 true이면 전체 결과는 expT의 계산값, false이면 expF의 계산
+                        값
+                    </li>
+                </ul>
+            </li>
+            <li>비트 연산
+                <ul>
+                    <li>비트들끼리의 비트 논리 연산, 비트 시프트 연산</li>
+                    <li><code>AND(a&amp;b), OR(a|b), XOR(a^b), NOT(~a)</code></li>
+                    <li>시프트
+                        <ul>
+                            <li>저장 공간에서 비트들의 오른쪽/왼쪽 이동
+                                <ul>
+                                    <li>a &lt;&lt; b(산술 left shift), a &gt;&gt; b(산술 right shift), a &gt;&gt;&gt; b(논리
+                                        right shift)
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>문자열 연산자
+                <ul>
+                    <li>문자열 연결 +, +=</li>
+                    <li>문자열 비교 !=, == , &lt;, &gt;, &lt;=, &gt;=(사전적 순서)</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>비교문
+        <ul>
+            <li>if, if-else</li>
+            <li>switch, break</li>
+        </ul>
+    </li>
+    <li>반복문
+        <ul>
+            <li>for문, while 문, do(작업문)-while(조건식) 문</li>
+            <li>continue 문 - 블럭 탈출해서 다시 반복문 실행</li>
+        </ul>
+    </li>
+    <li>함수
+        <ul>
+            <li><code>function 함수이름(arg1, arg2 ...){ CODE ... return something}</code></li>
+            <li>호출 let x = 함수(arg1, arg2)</li>
+            <li>함수의 종류(adder의 예)
+                <ul>
+                    <li><code>let result = adder(5,4) let result = adder() adder(5,4) adder()</code></li>
+                </ul>
+            </li>
+            <li>js의 대표적인 함수
+                <ul>
+                    <li>eval() 연산 진행 함수(문자열로 입력받음)</li>
+                    <li>parseInt, is NaN(숫자면 True)</li>
+                </ul>
+            </li>
+            <li>함수의 적용 방법(호출 방법)</li>
+        </ul>
+    </li>
+    <li>이벤트
+        <ul>
+            <li><code>&lt;span onmouseover=&quot;this.style.background=&#39;#ffff&#39;&quot; onmouseout=&quot;this.style.background=&#39;#0000&#39;&quot;</code>
+            </li>
+            <li><code>function mOver(obj){ yellow.style.background=&quot;green&quot;,
+                obj.style.color=&quot;red&quot;}</code></li>
+        </ul>
+    </li>
+</ul>
+
+
+</body>
+</html>

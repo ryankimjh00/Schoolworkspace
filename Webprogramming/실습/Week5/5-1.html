@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <script>
+        let num = Math.floor(Math.random() * 10 + 1);
+        let answer = window.prompt("숫자를 맞춰보세요(0~10): ");
+        while(num != answer) {
+            if(num > answer){
+                alert("UP");
+
+        }
+            else if(num < answer){
+                alert("DOWN");
+                break;
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

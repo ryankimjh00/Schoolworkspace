@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <script>
+        let number = Math.floor(Math.random() * 10);
+        let state;
+        if (number / 2 === 1) {
+            state = "홀";
+        } else {
+            state = "짝";
+        }
+        let answer = window.prompt("정답 입력: ");
+
+        for (let i = 0; i < 5; i++) {
+            if (state === answer) {
+                alert("correct");
+                break;
+            } else {
+                answer = window.prompt("다시 입력:")
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Consolas, serif;
+        }
+    </style>
+</head>
+<body>
+<h4 id="-">객체</h4>
+<ul>
+    <li>현실 세계는 객체들의 집합</li>
+    <li>자바스크립트 객체 구성
+        <ul>
+            <li>여러개의 프로퍼티(변수)와 메소드로 구성</li>
+        </ul>
+    </li>
+    <li>JS 객체 종류
+        <ul>
+            <li>자바스크립트는 <strong>객체 기반 언어</strong></li>
+            <li>코어 객체
+                <ul>
+                    <li>웹페이지 혹은 웹서버 응용 프로그램 어디서나 사용 가능</li>
+                </ul>
+            </li>
+            <li>HTML DOM 객체
+                <ul>
+                    <li>HTML 태그들을 객체화한 것들</li>
+                </ul>
+            </li>
+            <li>브라우저 객체
+                <ul>
+                    <li>BOM 객체, 브라우저 제어를 위해 제공되는 객체</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>코어 객체
+        <ul>
+            <li>Array, Date, String, Math 등</li>
+            <li>new 키워드 사용, 객체가 생성되면 객체 내부에 프로퍼티와 메소드들이 존재</li>
+            <li>객체 접근 &gt;&gt; 객체와 멤버 사이에 점(.) 연산자 이용
+                <ul>
+                    <li>배열 &gt;&gt; []로 생성, Array 객체로 생성([]는 초기값 주고, Array 는 크기만 알려준다(option.)</li>
+                    <li>Date 객체
+                        <ul>
+                            <li>시간 정보를 담는 객체(현재 시간 정보 = let now = new Date();)</li>
+                        </ul>
+                    </li>
+                    <li>String 객체
+                        <ul>
+                            <li>문자열을 담기 위한 객체, 생성되면 수정 불가</li>
+                            <li>길이는 .length</li>
+                            <li>[]연산자를 사용하여 각 문자를 접근하여 배열처럼 사용 가</li>
+                        </ul>
+                    </li>
+                    <li>Math 객체</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>사용자 객체
+        <ul>
+            <li><code>new Object()</code> 로 빈 객체 생성</li>
+            <li>리터럴 표기법으로 만들기
+                <ul>
+                    <li>중괄호를 이용하여 객체의 프로퍼티와 메소드 지정(제일 흔함)</li>
+                </ul>
+            </li>
+            <li>프로토타입
+                <ul>
+                    <li>객체의 모양을 가진 틀</li>
+                    <li>C++, JAVA에서의 클래스</li>
+                    <li>객체 생성시 new 프로토타입(Array, String 등) 을 이용함</li>
+                    <li>프로토타입 함수(생성자 함수): <code>function Student(name, score){this.getGrade = function(){...}}</code>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>추상화</strong></li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>
