@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let x = [];
+    for(let a = 0; a<10;a++){
+        let r = Math.random()*100;
+        x[a] = Math.floor(r);
+        document.write(x[a] + " ");
+    }
+    let big = x[0];
+    for(let a =1;a < 10;a++){
+        if(x[a]>big){
+            big = x[a];
+        }
+    }
+    document.write("<hr>가장 큰 수: " + big);
+    document.write("<hr>" + x.sort());
+
+</script>
+
+</body>
+</html>

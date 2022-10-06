@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <style>
+        div {
+            display: inline-block;
+            width: 150px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            let r = Math.random() * 225;
+            r = Math.floor(r);
+            let g = Math.random() * 225;
+            g = Math.floor(g);
+            let b = Math.random() * 225;
+            b = Math.floor(b);
+            document.write("<div style = 'background-color: rgb(" + r + "," + g + "," + b + ")'>");
+            document.write("rgb(" + r + "," + g + "," + b + ")");
+            document.write("</div>")
+        }
+        document.write("<br>");
+    }
+</script>
+</body>
+</html>

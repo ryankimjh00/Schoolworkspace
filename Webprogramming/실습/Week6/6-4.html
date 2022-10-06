@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <script>
+        let car = {
+            speed: 0,
+            oil: 0,
+
+            break: function (power) {
+                this.speed -= power;
+            },
+            accelerator: function (power) {
+                this.speed += power;
+            },
+            fill: function (oil) {
+                this.oil += oil;
+                document.getElementById("fuel").innerHTML = "Oil: " + this.oil;
+            },
+            drive: function () {
+                if (this.speed > 0 && this.oil > 0) {
+                    this.oil -= 0.5;
+                    this.speed -= 2;
+                    document.getElementById("eccel").innerHTML = "속도: " + this.speed;
+                    document.getElementById("fuel").innerHTML = "Oil: " + this.oil;
+                    document.getElementById("break").innerHTML = "속도: " + this.speed;
+
+                } else {
+                    this.speed = 0;
+                }
+            }
+        }
+
+        function driving() {
+            car.drive();
+        }
+
+        setInterval(driving, 1000);
+    </script>
+</head>
+<body>
+<form>
+    <span>Oil: 0</span>
+    <input id="fuel" onclick="car.fill(50)" type="button" value="주유">
+    <hr>
+    <input id="break" onclick="car.break(10)" type="button" value="브레이크">
+    <input id="eccel" onclick="car.accelerator(10)" type="button" value="액셀"><br><br>
+    <span id="CarSpeed">>>Stop</span>
+</form>
+</body>
+</html>

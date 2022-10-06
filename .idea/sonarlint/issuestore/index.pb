@@ -9,9 +9,3 @@ Q
 !MobileSmartSystem/hw2/arr2dict.py,9\8\98febdc27a0cf3fc761c3e62048d4dcd881e869f
 T
 $Webprogramming/실습/Week5/5-1.html,c\7\c799c30887ce4febbd9dca5fe20633a1015e4673
-T
-$Webprogramming/실습/Week5/5-2.html,8\b\8bd24c8df42f4b8d3cc27c051ae89a4c4ab55cf6
-T
-$Webprogramming/실습/Week5/5-3.html,5\a\5a0faea477a7226bc679bc10ed99be423699645c
-a
-1Webprogramming/과제/7장 과제/7장요약.html,5\d\5d433b8eddb6a3b303a342dc4c49d1e2978131f3
