@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+
+</head>
+<body>
+<h1 class="hTag">나는 h1 태그입니다.</h1>
+<h2 class="hTag">나는 h2 태그입니다.</h2>
+<h3 class="hTag">나는 h3 태그입니다.</h3>
+<h4 class="hTag">나는 h4 태그입니다.</h4>
+<h5 class="hTag">나는 h5 태그입니다.</h5>
+<h6 class="hTag">나는 h6 태그입니다.</h6>
+<hr>
+<script>
+    let tagArr = document.getElementsByClassName("hTag");
+    for(let i=0;i<tagArr.length;i++){
+        let element = tagArr[i];
+        document.write(element.innerHTML + "<br>");
+        //textContent 써도 된다.(사실 이게 교수님이 알려준 방식)
+    }
+</script>
+</body>
+</html>

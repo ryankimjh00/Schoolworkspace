@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <script>
+        function createSPAN() {
+            let obj = document.getElementById("parent");
+            let newSPAN = document.createElement("span");
+            newSPAN.innerHTML = "<br>새로 생성된 SPAN입니다.<br>";
+
+            obj.appendChild(newSPAN);
+
+            newSPAN.onclick = function (){
+                let p = this.parentElement;
+                p.removeChild(newSPAN)
+            }
+            obj.appendChild(newSPAN);
+        }
+    </script>
+</head>
+<body>
+<h3>SPAN 객체 동적 제어</h3>
+<hr>
+<div id="parent">DOM 트리에 동적 객체 삽입</div>
+<p><a href="javascript:createSPAN()">SPAN 생성</a></p>
+</body>
+</html>

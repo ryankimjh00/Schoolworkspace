@@ -2,12 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Document</title>
 </head>
 <body>
+<h1 id="8-">8장 요약</h1>
+<ul>
+    <li>HTML 페이지와 JS 객체
+        <ul>
+            <li>자바스크립트 코드는 브라우저로부터 3가지 유형의 객체를 제공받아 활용할 수 있다.</li>
+        </ul>
+    </li>
+    <li>HTML DOM
+        <ul>
+            <li>웹 페이지에 작성된 HTML 태그 당 객체 생성</li>
+        </ul>
+    </li>
+    <li>DOM 트리
+        <ul>
+            <li>DOM 트리는 부모 자식 관계</li>
+            <li>DOM 트리의 루트는 document 객체, 종류는 HTML 태그 종류 만큼, HTML 태그당 DOM 객체가 하나씩 생성됨</li>
+        </ul>
+    </li>
+    <li>DOM 객체
+        <ul>
+            <li>DOM 트리의 한 노드, HTML 태그 당 하나의 DOM 객체 생성</li>
+        </ul>
+    </li>
+    <li>HTML 태그
+        <ul>
+            <li>엘리먼트 이름(태그명), 속성, CSS3 스타일, 이벤트 리스너, 콘텐츠</li>
+        </ul>
+    </li>
+    <li>DOM 객체의 구성
+        <ul>
+            <li>프로퍼티, 메소드, 컬렉션, 이벤트 리스너, CSS3 스타일</li>
+        </ul>
+    </li>
+    <li>DOM 객체 다루기
+        <ul>
+            <li>DOM 객체 구분, id 태그 속성</li>
+            <li>DOM 객체 찾기, document.getElementById()</li>
+            <li>DOM 객체의 CSS3 스타일 동적 변경</li>
+        </ul>
+    </li>
+    <li>innerHTML 프로퍼티
+        <ul>
+            <li>시작 태그와 종료 태그 사이에 들어있는 HTML 콘텐츠</li>
+            <li>innerHTML 프로퍼티 수정 &gt; HTML 태그의 콘텐츠 변경</li>
+            <li>ex) <code>let p = document.getElementById(&quot;firstP) p.innerHTML = &quot;나의 &lt;img src = &#39;puppy.jpg&#39;&gt;입니다.&quot;</code>
+            </li>
+        </ul>
+    </li>
+    <li>this 키워드
+        <ul>
+            <li>객체 자신을 가리키는 JS 키워드</li>
+            <li>DOM 객체에서 <strong>객체 자신</strong>을 가리키는 용도로 사용</li>
+        </ul>
+    </li>
+    <li>document 객체
+        <ul>
+            <li><strong>HTML 문서 전체</strong>를 대변하는 객체
+                <ul>
+                    <li>프로퍼티 - HTML 문서의 전반적인 <strong>속성</strong> 내포</li>
+                </ul>
+            </li>
+            <li>DOM 객체를 접근하는 경로의 시작점, DOM트리의 최상위 객체</li>
+            <li><strong>document 객체는 DOM 객체가 아님</strong></li>
+            <li><code>getElementsByTagName(), getElementsByClassName()</code></li>
+        </ul>
+    </li>
+    <li>HTML 페이지 로딩 과정
+        <ul>
+            <li>브라우저는 HTML 페이지 로드 전 빈 상태 document 생성</li>
+            <li>HTML 페이지를 위에서 아래로 해석</li>
+            <li>HTML 태그들을 document 객체에 담아 간다(DOM 객체 생성)</li>
+            <li><code>&lt;/html&gt;</code> 태그를 만나면 document 객체를 완성하고 닫는다.</li>
+        </ul>
+    </li>
+    <li>document.writeln() 은 한칸 띄는것 뿐, 다음 줄로 넘어가지 않는다.</li>
+    <li>window.open()
+        <ul>
+            <li>window는 BOM 객체의 최상위 객체</li>
+            <li>새 윈도우를 열고 그곳에 HTML 문서 출력</li>
+        </ul>
+    </li>
+    <li>문서의 동적 구성
+        <ul>
+            <li>DOM 객체 동적 생성: document.createElement(”태그 이름”);
+                <ul>
+                    <li>태그 이름의 DOM 객체 생성</li>
+                    <li><code>ex) let newDIV = document.createElement(”div”);<br>
+                        newDIV.innerHTML = “새로 생성된 DIV입니다.”;<br>
+                        newDIV.setAttribute(”id”, “myDiv”); // id 부여<br>
+                        mewDIV.style.backgroundColor = “yellow”;</code></li>
+                    <li><code>&lt;div id=myDiv style=”background-color: yellow”&gt;<br>
+                        새로 생성된 DIV입니다.<br>
+                        &lt;/div&gt;</code></li>
+                </ul>
+            </li>
+            <li>DOM 트리에 삽입
+                <ul>
+                    <li>부모.appendChild(DOM 객체); &gt;&gt;&gt;마지막에 추가</li>
+                    <li>부모.prepend(DOM 객체); &gt;&gt;&gt; 앞에 추가</li>
+                    <li>부모.insertBefore(DOM객체, 기준 노드); &gt;&gt;&gt; 앞에 추가</li>
+                </ul>
+            </li>
+            <li>DOM 객체의 삭제
+                <ul>
+                    <li>let removeObj = 부모.removeChild(떼어내고자 하는 자식 객체);</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
 
 </body>
 </html>

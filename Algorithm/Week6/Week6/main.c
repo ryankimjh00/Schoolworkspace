@@ -27,7 +27,8 @@ void queue_print(QueueType* q) {
 		} while (i != q->front);
 	}
 	printf("\n");
-}int is_full(QueueType* q) {
+}
+int is_full(QueueType* q) {
 	return ((q->rear + 1) % MAX_QUEUE_SIZE == q -> front);
 }
 int is_empty(QueueType* q) {

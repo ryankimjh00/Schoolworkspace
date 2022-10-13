@@ -31,7 +31,8 @@ element get_front(DequeType* q) {
 	if (is_empty(q))
 		error("큐가 공백상태입니다");
 	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
-}void deque_print(DequeType* q) {
+}
+void deque_print(DequeType* q) {
 	printf("DEQUE(front=%d rear=%d) = ", q->front, q->rear);
 	if (!is_empty(q)) {
 		int i = q->front;
