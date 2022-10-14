@@ -1,38 +1,35 @@
 package hw.account;
 
 public class Account {
-	String accountNo;
-	String name;
-	int balance;
+	protected String accountNo;
+	protected String name;
+	protected int balance;
 
 	public Account(String accountNo, String name, int balance) {
 		this.accountNo = accountNo;
 		this.name = name;
 		this.balance = balance;
-		System.out.println(accountNo + " " + name + " " + balance);
+		System.out.println(accountNo + " " + name + " " + balance + "  계좌 생성 성공");
 	}
 
 	public void deposit(int amount) {
 		balance += amount;
-		System.out.println(balance);
+		System.out.println(amount + "원을 입금합니다");
 	}
 
 	public int withdraw(int amount) {
 		if (amount > balance) {
-			System.out.println(0);
+			System.out.println(0 + ", 출금할수 없습니다.");
 			return 0;
-		}
-
-		else {
+		} else {
 			balance -= amount;
-			System.out.println(balance);
+			System.out.println(amount + "원을 출금합니다");
 			return amount;
 		}
 	}
 
 	public void check() {
-		Account a = new Account(accountNo, name, balance);
-		System.out.println(a.balance);
+		System.out.println("잔액은 " + balance + "원 입니다.");
 	}
 
 }
