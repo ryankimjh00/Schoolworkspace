@@ -1,5 +1,7 @@
 package hw.account;
 
+import java.util.Scanner;
+
 public class Bank {
 	public static void main(String args[]) {
 		Account[] array = new Account[5];
@@ -32,6 +34,28 @@ public class Bank {
 			check.pay("2191298", 100);
 			check.pay("0000000", 100);
 		}
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("메뉴 선택: ");
+		boolean sys = true;
+		while (sys) {
+			String order = scanner.next();
+			switch (order) {
+			case "에스프레소":
+			case "카페라떼":
+			case "카푸치노":
+				int price = 3500;
+				System.out.println(order + "은" + price + "원 입니다.");
+				break;
+			case "아메리카노":
+				price = 2000;
+				System.out.println(order + "은" + price + "원 입니다.");
+				break;
+			default:
+				System.out.println("메뉴에 없음");
+				sys = false;
+			}
+		}
+
 	}
 
 }

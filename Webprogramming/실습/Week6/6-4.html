@@ -11,45 +11,47 @@
             speed: 0,
             oil: 0,
 
-            break: function (power) {
-                this.speed -= power;
+            brake:  function (strong) {
+                car.speed -= strong;
+                return car.speed;
             },
-            accelerator: function (power) {
-                this.speed += power;
+            accel: function (strong) {
+                this.speed += strong;
             },
             fill: function (oil) {
                 this.oil += oil;
-                document.getElementById("fuel").innerHTML = "Oil: " + this.oil;
+                document.getElementById("volume").innerHTML = "Oil: " + car.oil;
             },
             drive: function () {
                 if (this.speed > 0 && this.oil > 0) {
-                    this.oil -= 0.5;
+                    document.getElementById("volume").innerHTML = "Oil: " + this.oil;
+                    document.getElementById("CarSpeed").innerHTML = ">> speed" + this.speed;
                     this.speed -= 2;
-                    document.getElementById("eccel").innerHTML = "속도: " + this.speed;
-                    document.getElementById("fuel").innerHTML = "Oil: " + this.oil;
-                    document.getElementById("break").innerHTML = "속도: " + this.speed;
-
+                    this.oil -= 2;
                 } else {
+                    document.getElementById("CarSpeed").innerHTML = ">>STOP";
                     this.speed = 0;
                 }
             }
         }
 
-        function driving() {
+        function drive() {
             car.drive();
         }
 
-        setInterval(driving, 1000);
+        setInterval(drive, 500);
     </script>
 </head>
 <body>
-<form>
-    <span>Oil: 0</span>
-    <input id="fuel" onclick="car.fill(50)" type="button" value="주유">
-    <hr>
-    <input id="break" onclick="car.break(10)" type="button" value="브레이크">
-    <input id="eccel" onclick="car.accelerator(10)" type="button" value="액셀"><br><br>
-    <span id="CarSpeed">>>Stop</span>
+
+<form action="">
+    <div id="volume">Oil: 0</div>
+    <input id="oil" onclick="car.fill(50)" type="button" value="주유">
+    <p>
+    <input id="brake" onclick="car.brake(10)" type="button" value="브레이크">
+    <input id="accel" onclick="car.accel(10)" type="button" value="액셀"><br><br>
+
 </form>
+<div id="CarSpeed">>> Stop</div>
 </body>
 </html>

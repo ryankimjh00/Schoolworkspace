@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class CircleAreaTest {
 	public static void main(String[] args) {
+		int array[] = new int[5];
+		for(int i = 0; i< array.length; i++) {
+			System.out.print(array[i]);
+
+		}
 		Scanner s = new Scanner(System.in);
 		
 		System.out.print("반지름 입력: ");

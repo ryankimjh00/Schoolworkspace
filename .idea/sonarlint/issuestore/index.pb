@@ -21,25 +21,7 @@ e
 5Webprogramming/과제/7장 과제/실습문제_6.html,2\4\24bd2d112d0d29c93997451792b53501f46bf1c1
 e
 5Webprogramming/과제/7장 과제/실습문제_8.html,a\4\a45799fcdb50601ec3b191e62a54f72d8689bdb6
-T
-$Webprogramming/실습/Week6/6-1.html,2\0\20ba10b5551aa0e84cfeed81c9597e49628e4e85
-T
-$Webprogramming/실습/Week6/6-2.html,4\3\43d0072725ef77b52a088c537ccaff9f62ff067e
-T
-$Webprogramming/실습/Week6/6-4.html,a\6\a6bae708e318a9694b76d4b4e84f29112d9aad76
 b
 2Webprogramming/과제/8장 과제/8장 요약.html,8\9\89130be81ebc66b03df03d49c01087824c40e71b
 h
 8Webprogramming/과제/8장 과제/실습문제 10-1.html,1\4\149aa80ba8b9adfd6fb0e92cfeea131c1fbdb148
-T
-$Webprogramming/실습/Week6/6-3.html,c\c\cc9093e5eef1df80cbbabca077c38647e25f6617
-T
-$Webprogramming/실습/Week7/7-1.html,e\8\e88a8d0d698600a8a876caf78508bf7af93f766e
-T
-$Webprogramming/실습/Week7/7-2.html,7\4\7494a88281647cebdedf822084c2286d417a4dc8
-h
-8Webprogramming/과제/8장 과제/실습문제 10-2.html,6\1\61cbd1843ea656299deee8ca9353943d2940bd77
-T
-$Webprogramming/실습/Week7/7-4.html,3\7\37d5095aba21fdd7bad213eec0efd2886130c92c
-T
-$Webprogramming/실습/Week7/7-3.html,b\8\b84833c4f686ef1270147088f311efdc41cb82d5
