@@ -2,12 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>김종현4</title>
+    <style>
+        #accel > button {
+            border: 2px solid black;
+        }
+    </style>
+    <script>
+        let car = {
+            speed: 0,
+            oil: 0,
+
+            brake: function (strong) {
+                car.speed -= strong;
+                return car.speed;
+            },
+            accel: function (strong) {
+                this.speed += strong;
+            },
+            fill: function (oil) {
+                this.oil += oil;
+                document.getElementById("volume").innerHTML = "Oil(redCar): " + car.oil;
+            },
+            drive: function () {
+                if (this.speed > 0 && this.oil > 0) {
+                    document.getElementById("volume").innerHTML = "Oil(redCar): " + this.oil;
+                    document.getElementById("CarSpeed").innerHTML = ">> speed" + this.speed;
+                    this.speed -= 2;
+                    this.oil -= 2;
+                } else {
+                    document.getElementById("CarSpeed").innerHTML = ">>STOP";
+                    this.speed = 0;
+                }
+            }
+        }
+
+        function drive() {
+            car.drive();
+        }
+
+        setInterval(drive, 500);
+    </script>
 </head>
 <body>
 
+<form action="">
+    <h1 style="color: red">Red Car</h1>
+    <div id="volume">Oil(redCar): 0</div>
+    <input id="oil" onclick="car.fill(50)" type="button" value="주유">
+    <p>
+        <input id="brake" onclick="car.brake(10)" type="button" value="브레이크">
+        <input id="accel" onclick="car.accel(10)" type="button" value="액셀"><br><br>
+</form>
+<div id="CarSpeed">>> STOP</div>
+
+
+<form action="">
+    <h1 style="color: blue">Blue Car</h1>
+    <div id="volume_b">Oil: 0</div>
+    <input id="oil_b" onclick="car.fill(50)" type="button" value="주유">
+    <p>
+        <input id="brake_b" onclick="car.brake(10)" type="button" value="브레이크">
+        <input id="accel_b" onclick="car.accel(10)" type="button" value="액셀"><br><br>
+    <div id="CarSpeed_b">>> Stop</div>
+
+</form>
 </body>
 </html>

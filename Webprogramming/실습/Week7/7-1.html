@@ -9,20 +9,31 @@
 
 </head>
 <body>
-<h1 class="hTag">나는 h1 태그입니다.</h1>
-<h2 class="hTag">나는 h2 태그입니다.</h2>
-<h3 class="hTag">나는 h3 태그입니다.</h3>
-<h4 class="hTag">나는 h4 태그입니다.</h4>
-<h5 class="hTag">나는 h5 태그입니다.</h5>
-<h6 class="hTag">나는 h6 태그입니다.</h6>
+<h1 id="hTag1">나는 첫번째줄 태그입니다.</h1>
+<h2 id="hTag2">나는 두번째줄 태그입니다.</h2>
+<h3 id="hTag3">나는 세번째줄 태그입니다.</h3>
+<h4 id="hTag4">나는 네번째줄 태그입니다.</h4>
+<h5 id="hTag5">나는 다섯번째줄 태그입니다.</h5>
+<h6 id="hTag6">나는 여섯번째줄 태그입니다.</h6>
 <hr>
 <script>
-    let tagArr = document.getElementsByClassName("hTag");
-    for(let i=0;i<tagArr.length;i++){
-        let element = tagArr[i];
-        document.write(element.innerHTML + "<br>");
-        //textContent 써도 된다.(사실 이게 교수님이 알려준 방식)
-    }
+    // let tagArr = document.getElementsByClassName("hTag");
+    // for (let i = 0; i < tagArr.length; i++) {
+    //     let element = tagArr[i];
+    //
+    //     if (i % 2 === 0) {
+    //         document.getElementsByClassName("hTag").style.color = "red";
+    //     }
+    //     document.write(element.textContent + "<br>");
+    // }
+    let element = document.getElementById("hTag1").style.color = "red";
+    document.write(element.textContent + "<br>");
+    document.getElementById("hTag2").style.color = "blue";
+    document.getElementById("hTag3").style.color = "red";
+    document.getElementById("hTag4").style.color = "blue";
+    document.getElementById("hTag5").style.color = "red";
+    document.getElementById("hTag6").style.color = "blue";
+    document.getElementById("hTag7").style.color = "red";
 </script>
 </body>
 </html>

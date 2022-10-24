@@ -2,12 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>김종현1</title>
+
 </head>
 <body>
+<h1 class="hTag">나는 첫번째줄 태그입니다.</h1>
+<h2 class="hTag">나는 두번째줄 태그입니다.</h2>
+<h3 class="hTag">나는 세번째줄 태그입니다.</h3>
+<h4 class="hTag">나는 네번째줄 태그입니다.</h4>
+<h5 class="hTag">나는 다섯번째줄 태그입니다.</h5>
+<h6 class="hTag">나는 여섯번째줄 태그입니다.</h6>
+<hr>
+<script>
+    let tagArr = document.getElementsByClassName("hTag");
+    for (let i = 0; i < tagArr.length; i++) {
+        let element = tagArr[i];
+        if (i % 2 === 0) {
+            element.style.color = "red";
+            document.write(element.textContent + "<br>");
+        } else {
+            element.style.color = "blue";
+            document.write(element.textContent + "<br>");
 
+        }
+    }
+</script>
 </body>
 </html>
