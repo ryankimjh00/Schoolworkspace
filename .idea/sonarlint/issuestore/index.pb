@@ -51,3 +51,23 @@ T
 $Webprogramming/실습/Week6/6-3.html,c\c\cc9093e5eef1df80cbbabca077c38647e25f6617
 T
 $Webprogramming/실습/Week6/6-4.html,a\6\a6bae708e318a9694b76d4b4e84f29112d9aad76
+L
+MobileSmartSystem/hw2/hw2.py,5\8\5894aa2bc564028214c36fa6d9e4426ef1c71495
+O
+MobileSmartSystem/hw2/mydata.py,0\3\030ffecfa963fa43114d28845307c790f84f19e7
+Q
+!MobileSmartSystem/hw2/arr2dict.py,9\8\98febdc27a0cf3fc761c3e62048d4dcd881e869f
+M
+MobileSmartSystem/hw2/test.py,1\c\1c609974301e620d37f32d69b77b990def602a1f
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+`
+0Webprogramming/2191298_김종현/김종현4.html,9\9\99e805af7c3d00b721aea476189e80fcf3bf2783
+`
+0Webprogramming/2191298_김종현/김종현1.html,9\f\9f0a283b6f97be9b514a21c1a4f2c97e7bb687d5
+`
+0Webprogramming/2191298_김종현/김종현2.html,5\6\5664455d6f1734253a7fd8e89229b253c3e803eb
+`
+0Webprogramming/2191298_김종현/김종현3.html,4\7\476d3c8f61521501bc1d4221b710ef547965a62a
+T
+$Webprogramming/실습/Week7/7-1.html,e\8\e88a8d0d698600a8a876caf78508bf7af93f766e
