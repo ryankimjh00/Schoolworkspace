@@ -8,14 +8,14 @@ public class CreditLineAccount extends Account {
 	}
 
 	@Override
-	public int withdraw(int amount) {
+	public void withdraw(int amount) {
 		if (amount > balance + this.creditLine) {
 			System.out.println(0);
-			return 0;
+//			return 0;
 		} else {
 			balance -= amount;
 			System.out.println("마이너스 한도는 " + creditLine + "원입니다." + amount + "원을 출금합니다");
-			return amount;
+//			return amount;
 		}
 	}
 }

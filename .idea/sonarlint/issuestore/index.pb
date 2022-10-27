@@ -61,13 +61,11 @@ M
 MobileSmartSystem/hw2/test.py,1\c\1c609974301e620d37f32d69b77b990def602a1f
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-`
-0Webprogramming/2191298_김종현/김종현4.html,9\9\99e805af7c3d00b721aea476189e80fcf3bf2783
-`
-0Webprogramming/2191298_김종현/김종현1.html,9\f\9f0a283b6f97be9b514a21c1a4f2c97e7bb687d5
-`
-0Webprogramming/2191298_김종현/김종현2.html,5\6\5664455d6f1734253a7fd8e89229b253c3e803eb
-`
-0Webprogramming/2191298_김종현/김종현3.html,4\7\476d3c8f61521501bc1d4221b710ef547965a62a
 T
 $Webprogramming/실습/Week7/7-1.html,e\8\e88a8d0d698600a8a876caf78508bf7af93f766e
+R
+"MobileSmartSystem/hw3/hw3viewer.py,8\5\852369302e91667457dd0a4d1402da6e5d7a9296
+R
+"MobileSmartSystem/hw3/hw3camera.py,2\4\24ed2f369754ed68a1f16cd536b7d74921161c2a
+W
+'MobileSmartSystem/hw3/hw3camera_test.py,9\f\9f8b960712acef3145cfd703b98f292c67675f84

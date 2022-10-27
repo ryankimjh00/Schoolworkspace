@@ -9,10 +9,11 @@ public class BonusPointAccount extends Account {
 	}
 
 	@Override
-	public void deposit(int amount) {
+	public int deposit(int amount) {
 		balance += amount;
 		bonusPoint += amount * 0.001;
 		System.out.println(amount + "를 입금합니다.");
+		return balance;
 	}
 
 	@Override
