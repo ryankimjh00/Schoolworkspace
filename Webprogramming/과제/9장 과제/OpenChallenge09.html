@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: darkgrey;
+
+        }
+
+        div {
+            color: white;
+            position: relative;
+            margin-left: 25%;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            width: 50%;
+            height: 3em;
+            border-radius: 10px;
+            background-color: dimgrey;
+        }
+    </style>
+    <script>
+        let tds;
+        let s = 0;
+
+        function set() {
+            createTable();
+            let index=0;
+            tds = document.getElementsByTagName("td");
+            let img = document.createElement("img");
+            img.setAttribute("src", "../../media/BBB.png");
+            img.setAttribute("width", "40px");
+            img.setAttribute("height", "35px");
+            img.onclick = moveImg;
+            moveImg();
+            changeImg();
+            Life();
+            if(onclick(tds[index])!==tds[s]){
+                wrongClick();
+            }
+
+            function moveImg() {
+                s = Math.floor(Math.random() * tds.length);
+                tds[s].appendChild(img);
+                //img.setAttribute("src", "../../media/boom.png");
+            }
+
+            function wrongClick() {
+                document.removeChild(tds[s]);
+                tds[s].appendChild(img);
+                img.setAttribute("src", "../../media/boom.png");
+            }
+
+            function changeImg() {
+                let img1 = document.getElementsByTagName("img");
+                img1.src = "../../media/boom.png"
+            }
+
+        }
+
+        function Life() {
+            let count = 0;
+            let life = document.getElementById("Life");
+
+            for (let i = 0; i < 3; i++) {
+
+                let lifeImg = document.createElement("img");
+                lifeImg.setAttribute("src", "../../media/life.png");
+                lifeImg.setAttribute("width", "40px");
+                lifeImg.setAttribute("height", "40px");
+                lifeImg.setAttribute("align", "center");
+                life.appendChild(lifeImg);
+            }
+        }
+
+        function Score() {
+            let score = document.getElementById("Score");
+        }
+
+        function createTable() {
+            let table = document.createElement("table");
+            table.style.marginLeft = "auto"
+            table.style.marginRight = "auto"
+            table.style.marginTop = "10em"
+            document.body.appendChild(table);
+            for (let i = 0; i < 10; i++) {
+                let tr = document.createElement("tr");
+                table.appendChild(tr);
+                table.style.marginLeft = "20%"
+                table.style.position = "relative"
+                for (let j = 0; j < 10; j++) {
+                    let td = document.createElement("td");
+                    td.style.width = "40px";
+                    td.style.height = "40px";
+                    td.style.border = "1px solid black"
+                    td.style.backgroundColor = "grey"
+                    td.style.borderRadius = "4px"
+                    tr.appendChild(td);
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="set()">
+<div id="Score">점수판</div>
+<br>
+<div id="Life"></div>
+</body>
+</html>

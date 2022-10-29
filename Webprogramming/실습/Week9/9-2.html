@@ -6,6 +6,11 @@
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Document</title>
+    <style>
+        body {
+            background-color: darkgrey;
+        }
+    </style>
     <script>
         let tds;
         let s = 0;
@@ -16,7 +21,7 @@
             let img = document.createElement("img");
             img.setAttribute("src", "../../media/BBB.png");
             img.setAttribute("width", "40px");
-            img.setAttribute("height", "40px");
+            img.setAttribute("height", "35px");
             img.onclick = moveImg;
             moveImg();
 
@@ -24,19 +29,25 @@
                 s = Math.floor(Math.random() * tds.length);
                 tds[s].appendChild(img);
             }
+
         }
 
         function createTable() {
+            let index = 0;
             let table = document.createElement("table");
+            table.style.marginTop = "100px"
+            table.style.marginLeft = "100px"
             document.body.appendChild(table);
             for (let i = 0; i < 10; i++) {
                 let tr = document.createElement("tr");
                 table.appendChild(tr);
+                table.style.alignContent = "center"
                 for (let j = 0; j < 10; j++) {
                     let td = document.createElement("td");
                     td.style.width = "40px";
                     td.style.height = "40px";
-                    td.style.border = "1px solid blue"
+                    td.style.border = "1px solid black"
+                    td.style.backgroundColor = "grey"
                     tr.appendChild(td);
                 }
             }
@@ -44,6 +55,5 @@
     </script>
 </head>
 <body onload="set()">
-
 </body>
 </html>
