@@ -1,26 +1,56 @@
+import sys
+
 import io
-import cv2
+import time
+import picamera
 from PIL import Image, ImageFilter
 import paho.mqtt.client as mqtt
+import cv2
 
-broker_address = input("브로커 IP>>")
+isPicamera = False  # 파이카메라인지 웹캠인지 구별
+isStarted = False
 
+
+def onConnect(client, userdata, flag, rc):
+    print("Connect with result code:" + str(rc))
+    client.subscribe("command", qos=0)
+    pass
+
+
+def onMessage(client, userdata, msg):
+    global isStarted
+    command = str(msg.payload.decode("utf-8"))
+    print("receive message =%s" % command)
+    if (command == 'start'):
+        isStarted = True
+    elif (command == 'stop'):
+        isStarted = False
+    pass
+
+
+broker_address = "localhost"
 client = mqtt.Client()
+client.on_connect = onConnect
+client.on_message = onMessage
 client.connect(broker_address, 1883)
 client.loop_start()
+camera = None
 
-camera = cv2.VideoCapture(0, cv2.CAP_V4L)
-camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-
-while client.subscibe("start"):
-    stream = io.BytesIO()
-    ret, frame = camera.read()
-    Image.fromarray(frame).save(stream, format='JPEG')
-    stream.seek(0)
-    im_bytes = stream.getvalue()  # 바이트 배열로 저장하
-    client.publish("mjpeg", im_bytes, qos=0)  # 클라이언트(윈도우)로이미지전송
-
-print("프로그램 종료...")
+if (isPicamera):
+    camera = picamera.PiCamera(framerate=30)
+else:
+    camera = cv2.VideoCapture(1, cv2.CAP_V4L)
+while (True):
+    if (isStarted == True):
+        stream = io.BytesIO()
+        if (isPicamera):
+            camera.capture(stream, format='jpeg', use_video_port=True)
+        else:
+            ret, frame = camera.read()
+            Image.fromarray(frame).save(stream, format='JPEG')
+        stream.seek(0)
+        client.publish("mjpeg", stream.read(), qos=0)
+    else:
+        time.sleep(0.1)
 client.loop_stop()
-client.disconnect()  # disconnect to broker
+client.disconnect()

@@ -19,7 +19,8 @@ while True:
     Image.fromarray(frame).save(stream, format='JPEG')
     stream.seek(0)
     im_bytes = stream.getvalue()  # 바이트 배열로 저장하
-    client.publish("mjpeg", im_bytes, qos=0)  # 클라이언트(윈도우)로이미지전송
+    if client.subscribe("start"):
+        client.publish("mjpeg", im_bytes, qos=0)  # 클라이언트(윈도우)로이미지전송
 
 print("프로그램 종료...")
 client.loop_stop()
