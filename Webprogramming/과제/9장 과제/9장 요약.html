@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<h1 id="9-">9장 요약</h1>
+<ul>
+    <li>이벤트 개요
+        <ul>
+            <li>사용자의 입력 행위나 문서나 브라우저의 상태변화를 자바스크림트 코드에게 알리는 통지</li>
+        </ul>
+    </li>
+    <li>이벤트 리스너
+        <ul>
+            <li>발생한 이벤트에 대처하기 위해 작성된 JS 코드</li>
+            <li>onmouseover, onclick..등등</li>
+        </ul>
+    </li>
+    <li>이벤트 객체
+        <ul>
+            <li>발생한 이벤트에 관련된 다양한 정보를 담은 객체</li>
+            <li>이벤트가 처리되고 나면 이벤트 객체 소멸</li>
+            <li>전달받기
+                <ul>
+                    <li>이름을 가진 이벤트 리스너
+                        <ul>
+                            <li><code>function f(e)</code></li>
+                        </ul>
+                    </li>
+                    <li>익명 함수
+                        <ul>
+                            <li><code>obj.onclick = function(e){}</code></li>
+                        </ul>
+                    </li>
+                    <li>HTML 태그에 이벤트 리스너
+                        <ul>
+                            <li><code>function f(e) {} ... &lt;button onclick = &quot;f(event)&quot;&gt;...</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>이벤트 객체에 들어있는 정보
+        <ul>
+            <li>현재 발생한 이벤트에 관한 다양한 정보
+                <ul>
+                    <li>이벤트 객체의 프로퍼티와 메소드로 알 수 있음</li>
+                </ul>
+            </li>
+            <li>이벤트 객체의 공통 멤버(type, target, currentTarget, defaultPrevented, reventDefault())</li>
+            <li>target 프로퍼티
+                <ul>
+                    <li>이벤트 타겟 객체를 가리킴</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>이벤트 흐름
+        <ul>
+            <li>이벤트가 발생하면 window 객체에 먼저 도달, DOM트리를 따라 타겟에 도착, 다시 반대로 window 객체에 도달, 소멸</li>
+            <li>캡쳐 단계</li>
+            <li>버블 단계</li>
+        </ul>
+    </li>
+    <li>DOM 객체의 이벤트 리스너
+        <ul>
+            <li>캡쳐 리스너와 버블 리스너를 모두 소유 가능</li>
+        </ul>
+    </li>
+    <li>캡쳐 리스너와 버블 리스너 등록
+        <ul>
+            <li>addEventListener()의 3번째 매개변수 이용
+                <ul>
+                    <li>true이면 캡쳐, false면 버블</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>마우스 핸들링
+        <ul>
+            <li>onmousedown, onmouseclick, onmousemove 등등</li>
+        </ul>
+    </li>
+    <li>onload로 공고창 출력</li>
+    <li>이미지 로딩 완료와 onload
+        <ul>
+            <li>Image 객체
+                <ul>
+                    <li><code> < img > </code> 태그에 의해 생성되는 DOM 객체</li>
+                    <li>new Image(); JS에 의해 생성되는 객체</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>onfocus와 onblur
+        <ul>
+            <li>입력 없이 다른 창 이동 불가</li>
+        </ul>
+    </li>
+    <li>라디오 버튼과 체크 박스
+        <ul>
+            <li>라디오 버튼은 한개만, 체크 박스는 여러개 선택 가능</li>
+        </ul>
+    </li>
+    <li>키 이벤트
+        <ul>
+            <li>onkeydown(키가 눌리는 순간), onkeypress(문자키와 반드시 조합), onkeyup(키를 떼는 순간)</li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>
