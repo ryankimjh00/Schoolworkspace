@@ -1,13 +1,0 @@
-
-_python:S2208"GImport only needed names or import the module and then use its members.(ï€¢
-epython:S1542"MRename function "onStart" to match the regular expression ^[a-z_][a-z0-9_]*$.(¼íé•
-4python:S2772"Remove this unneeded "pass".(ã‘Û¾
-ipython:S1542"LRename function "onStop" to match the regular expression ^[a-z_][a-z0-9_]*$.(”³ë£ÿÿÿÿÿ
-4python:S2772"Remove this unneeded "pass".(ã‘Û¾
-dpython:S1542"LRename function "onExit" to match the regular expression ^[a-z_][a-z0-9_]*$.(‹Ü¢½
-4python:S2772"Remove this unneeded "pass".(ã‘Û¾
-gpython:S1542 "ORename function "onConnect" to match the regular expression ^[a-z_][a-z0-9_]*$.(‘¬ë
-9python:S2772$"Remove this unneeded "pass".(´“ê«ÿÿÿÿÿ
-gpython:S1542'"ORename function "onMessage" to match the regular expression ^[a-z_][a-z0-9_]*$.(¿Îğ²
-4python:S27720"Remove this unneeded "pass".(ã‘Û¾
-Cpython:S5806)"+Rename this variable; it shadows a builtin.(‰™¬ê

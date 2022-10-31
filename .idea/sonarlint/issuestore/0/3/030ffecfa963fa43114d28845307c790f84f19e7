@@ -1,5 +1,0 @@
-
-gpython:S1542"ORename function "inputData" to match the regular expression ^[a-z_][a-z0-9_]*$.(áÙõ
-Bpython:S1481"%Remove the unused local variable "i".(‡¬ß°ıÿÿÿÿ
-kpython:S1542"NRename function "printArr" to match the regular expression ^[a-z_][a-z0-9_]*$.(«¤ƒŒùÿÿÿÿ
-lpython:S1542"ORename function "printDict" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÒÂ¶ãşÿÿÿÿ
