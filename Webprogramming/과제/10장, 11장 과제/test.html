@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h2>학점 별로 학생 수를 입력하면 파이 차트로 비율 그리기</h2>
+<hr>
+A <input id="a" type="number" value="0">명 B <input id="b" type="number" value="0">명 C <input id="c" type="number"
+                                                                                             value="0">명<br>
+D <input id="d" type="number" value="0">명 F <input id="f" type="number" value="0">명 <input onclick="chart()" type="button"
+                                                                                           value="차트그리기"><br>
+
+<canvas height="450" id="myCanvas" style="background-color: aliceblue;" width="600">
+</canvas>
+
+<script>
+    function chart() {
+        var colors = ["blue", "green", "yellow", "magenta", "red"];
+        var grades = ["A", "B", "C", "D", "F"];
+        var p_sum = [];
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        var a = document.getElementById("a").value;
+        var b = document.getElementById("b").value;
+        var c = document.getElementById("c").value;
+        var d = document.getElementById("d").value;
+        var f = document.getElementById("f").value;
+
+        var sum = Number(a) + Number(b) + Number(c) + Number(d) + Number(f);
+        p_sum.push(eval(a / sum * 100));
+        p_sum.push(eval(b / sum * 100));
+        p_sum.push(eval(c / sum * 100));
+        p_sum.push(eval(d / sum * 100));
+        p_sum.push(eval(f / sum * 100));
+
+        context.fillStyle = "blue";
+
+        for (var j = 0; j < 5; j++) {
+            context.fillText(grades[j] + " 학점" + p_sum[j] + "%: " + colors[j], 10, 20 + j * 15);
+        }
+
+        let startAngle = 0;
+        let endAngle=0;
+        for (var i = 0; i < 5; i++) {
+            context.beginPath();
+            context.moveTo(canvas.width / 2, canvas.height / 2);
+            console.log("start ", colors[i], " ", startAngle);
+            endAngle = startAngle + (Math.PI * 2) / 100 * p_sum[i];
+            console.log("end ", endAngle);
+            context.arc(canvas.width / 2, canvas.height / 2, 200, startAngle, endAngle);
+            context.closePath();
+            context.fillStyle = colors[i];
+            context.fill();
+
+            startAngle = endAngle;
+        }
+    }
+</script>
+</body>
+</html>
