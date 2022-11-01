@@ -2,54 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Document</title>
 </head>
 <body>
-<h2>학점 별로 학생 수를 입력하면 파이 차트로 비율 그리기</h2>
+<h3>학점 별로 학생 수를 입력하면 파이 차트로 비율 그리기</h3>
 <hr>
-A <input id="a" type="number" value="0">명 B <input id="b" type="number" value="0">명 C <input id="c" type="number"
-                                                                                             value="0">명<br>
-D <input id="d" type="number" value="0">명 F <input id="f" type="number" value="0">명 <input onclick="chart()" type="button"
-                                                                                           value="차트그리기"><br>
+A <input id="A" type="number" value="10">
+B <input id="B" type="number" value="10">
+C <input id="C" type="number" value="10">
+<br>
+D <input id="D" type="number" value="10">
+F <input id="F" type="number" value="10">
 
-<canvas height="450" id="myCanvas" style="background-color: aliceblue;" width="600">
+<input onclick="chart()"
+       type="button"
+       value="차트그리기">
+<br>
+
+<canvas height="450" id="myCanvas" style="background-color: grey;" width="600">
 </canvas>
 
 <script>
     function chart() {
-        var colors = ["blue", "green", "yellow", "magenta", "red"];
-        var grades = ["A", "B", "C", "D", "F"];
-        var p_sum = [];
-        var canvas = document.getElementById("myCanvas");
-        var context = canvas.getContext("2d");
-
+        let colors = ["blue", "green", "yellow", "magenta", "red"];
+        let grades = ["A", "B", "C", "D", "F"];
+        let p_sum = [];
+        let canvas = document.getElementById("myCanvas");
+        let context = canvas.getContext("2d");
         context.clearRect(0, 0, canvas.width, canvas.height);
 
-        var a = document.getElementById("a").value;
-        var b = document.getElementById("b").value;
-        var c = document.getElementById("c").value;
-        var d = document.getElementById("d").value;
-        var f = document.getElementById("f").value;
 
-        var sum = Number(a) + Number(b) + Number(c) + Number(d) + Number(f);
-        p_sum.push(eval(a / sum * 100));
-        p_sum.push(eval(b / sum * 100));
-        p_sum.push(eval(c / sum * 100));
-        p_sum.push(eval(d / sum * 100));
-        p_sum.push(eval(f / sum * 100));
+        let A = document.getElementById("A").value;
+        let B = document.getElementById("B").value;
+        let C = document.getElementById("C").value;
+        let D = document.getElementById("D").value;
+        let F = document.getElementById("F").value;
+
+        let sum = Number(A) + Number(B) + Number(C) + Number(D) + Number(F);
+        p_sum.push(A / sum * 100);
+        p_sum.push(B / sum * 100);
+        p_sum.push(C / sum * 100);
+        p_sum.push(D / sum * 100);
+        p_sum.push(F / sum * 100);
+
 
         context.fillStyle = "blue";
 
-        for (var j = 0; j < 5; j++) {
+        for (let j = 0; j < 5; j++) {
             context.fillText(grades[j] + " 학점" + p_sum[j] + "%: " + colors[j], 10, 20 + j * 15);
         }
 
         let startAngle = 0;
-        let endAngle=0;
-        for (var i = 0; i < 5; i++) {
+        let endAngle = 0;
+        for (let i = 0; i < 5; i++) {
             context.beginPath();
             context.moveTo(canvas.width / 2, canvas.height / 2);
             console.log("start ", colors[i], " ", startAngle);
@@ -59,7 +67,6 @@ D <input id="d" type="number" value="0">명 F <input id="f" type="number" value=
             context.closePath();
             context.fillStyle = colors[i];
             context.fill();
-
             startAngle = endAngle;
         }
     }

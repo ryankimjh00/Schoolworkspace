@@ -5,26 +5,8 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>Document</title>
+    <title>2191298_김종현_OpenChallenge11</title>
 </head>
-<body>
-<h3>학점 별로 학생 수를 입력하면 파이 차트로 비율 그리기</h3>
-<hr>
-A <input class="score" type="number" value="0">
-B <input class="score" type="number" value="0">
-C <input class="score" type="number" value="0">
-<br>
-D <input class="score" type="number" value="0">
-F <input class="score" type="number" value="0">
-
-<input onclick="chart()"
-       type="button"
-       value="차트그리기">
-<br>
-
-<canvas height="450" id="myCanvas" style="background-color: aliceblue;" width="600">
-</canvas>
-
 <script>
     function chart() {
         let colors = ["blue", "green", "yellow", "magenta", "red"];
@@ -32,31 +14,24 @@ F <input class="score" type="number" value="0">
         let p_sum = [];
         let canvas = document.getElementById("myCanvas");
         let context = canvas.getContext("2d");
+        context.font = "14px serif"
         context.clearRect(0, 0, canvas.width, canvas.height);
 
-        /*        let a = document.getElementById("a").value;
-                let b = document.getElementById("b").value;
-                let c = document.getElementById("c").value;
-                let d = document.getElementById("d").value;
-                let f = document.getElementById("f").value;*/
         let sum = 0;
+        let score = document.getElementsByClassName("score");
+        let scores = [];
         for (let i = 0; i < 5; i++) {
-            let score = document.getElementsByClassName("score").item(i);
-            sum += score[i];
-            p_sum[i] = (score[i] / sum) * 100;
+            scores[i] = Number(score[i].value); //className을 받아온 값들은 String이기 때문에 Number로 바꾸는 과정 수행
+            sum += scores[i];
         }
 
-        //let sum = Number(a) + Number(b) + Number(c) + Number(d) + Number(f);
-        // p_sum.push(eval(a / sum * 100));
-        // p_sum.push(eval(b / sum * 100));
-        // p_sum.push(eval(c / sum * 100));
-        // p_sum.push(eval(d / sum * 100));
-        // p_sum.push(eval(f / sum * 100));
+        for (let i = 0; i < 5; i++) {
+            p_sum[i] = Math.round(scores[i] / sum * 100);
+        }
 
         context.fillStyle = "blue";
-
-        for (let i = 0; i < 5; i++) {
-            context.fillText(grades[i] + " 학점" + p_sum[i] + "%: " + colors[i], 10, 20 + i * 15);
+        for (let j = 0; j < 5; j++) {
+            context.fillText(grades[j] + " 학점" + p_sum[j] + "%: " + colors[j], 10, 30 + j * 20);
         }
 
         let startAngle = 0;
@@ -71,10 +46,25 @@ F <input class="score" type="number" value="0">
             context.closePath();
             context.fillStyle = colors[i];
             context.fill();
-
             startAngle = endAngle;
         }
     }
+
 </script>
+<body>
+<h3>학점 별로 학생 수를 입력하면 파이 차트로 비율 그리기</h3>
+<hr>
+A <input class="score" type="number" value="0">
+B <input class="score" type="number" value="0">
+C <input class="score" type="number" value="0">
+<br>
+D <input class="score" type="number" value="0">
+F <input class="score" type="number" value="0">
+
+<input onclick="chart()"
+       type="button"
+       value="차트그리기">
+<br><br>
+<canvas height="450" id="myCanvas" style="background-color: lightgrey;" width="600"></canvas>
 </body>
 </html>
