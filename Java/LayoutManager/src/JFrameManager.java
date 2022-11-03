@@ -30,6 +30,7 @@ public class JFrameManager {
 		
 		frame.add(createInputPanel(), BorderLayout.CENTER);
 		// frame.add(buildLayout(), BorderLayout.CENTER);
+		buildLayout();
 		frame.add(label, BorderLayout.SOUTH);
 
 	}
