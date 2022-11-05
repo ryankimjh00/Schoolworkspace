@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "중간고사 연습", "중�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Week9", "Week9\Week9.vcxproj", "{46295CCF-BDB3-4F66-B2F3-5662D1CA715C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Week10", "Week10\Week10.vcxproj", "{7F9B545D-0F01-4551-A915-E0283CC3CEAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{46295CCF-BDB3-4F66-B2F3-5662D1CA715C}.Release|x64.Build.0 = Release|x64
 		{46295CCF-BDB3-4F66-B2F3-5662D1CA715C}.Release|x86.ActiveCfg = Release|Win32
 		{46295CCF-BDB3-4F66-B2F3-5662D1CA715C}.Release|x86.Build.0 = Release|Win32
+		{7F9B545D-0F01-4551-A915-E0283CC3CEAC}.Debug|x64.ActiveCfg = Debug|x64
+		{7F9B545D-0F01-4551-A915-E0283CC3CEAC}.Debug|x64.Build.0 = Debug|x64
+		{7F9B545D-0F01-4551-A915-E0283CC3CEAC}.Debug|x86.ActiveCfg = Debug|Win32
+		{7F9B545D-0F01-4551-A915-E0283CC3CEAC}.Debug|x86.Build.0 = Debug|Win32
+		{7F9B545D-0F01-4551-A915-E0283CC3CEAC}.Release|x64.ActiveCfg = Release|x64
+		{7F9B545D-0F01-4551-A915-E0283CC3CEAC}.Release|x64.Build.0 = Release|x64
+		{7F9B545D-0F01-4551-A915-E0283CC3CEAC}.Release|x86.ActiveCfg = Release|Win32
+		{7F9B545D-0F01-4551-A915-E0283CC3CEAC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

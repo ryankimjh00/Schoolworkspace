@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<canvas height="200" id="canvas" style="background-color: aliceblue" width="300"></canvas>
+<script>
+    let canvas = document.getElementById("canvas");
+    let context = canvas.getContext("2d");
+
+    let color = ["red", "blue", "green", "black", "yellow"];
+    for (let i = 0; i < 5; i++) {
+        context.beginPath();
+        context.rect(i * 60, 50, 50, 50);
+        context.fillStyle = color[i];
+        context.fill();
+        context.closePath();
+    }
+    context.moveTo(200, 300);
+    context.lineTo(50, 60);
+    context.lineTo(10, 20);
+    context.closePath();
+    context.stroke();
+</script>
+</body>
+</html>
