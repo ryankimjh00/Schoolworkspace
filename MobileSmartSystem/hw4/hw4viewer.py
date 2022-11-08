@@ -1,4 +1,3 @@
-hw4viewer.py
 # 이 프로그램에서는 hw4controller.py과 연동되기 위하여 1라인 코드가 추가되어야 합니다.
 import sys
 import io
@@ -8,10 +7,11 @@ from PIL import Image, ImageFilter, ImageTk
 import paho.mqtt.client as mqtt
 import queue
 
-broker_address = "192.168.0.47"  # input("브로커 IP>>")
+broker_address = "192.168.137.200"  # input("브로커 IP>>")
 
 isRunning = True  # 프로그램 실행을 계속한다
 isDistance = False  # 거리를 수신하고 있으면 True
+isOn = False  # Led가 켜져있으면 True
 myqueue = queue.Queue()
 
 
@@ -80,6 +80,7 @@ def onMessage(client, userdata, msg):
 
     if (msg.topic == "distance"):
         distanceLabel.config(text=str(msg.payload.decode("utf-8")))
+        client.subscribe("distance", str(msg.topic), qos=0)
         pass
     pass
 

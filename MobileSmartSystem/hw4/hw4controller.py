@@ -2,7 +2,6 @@
 import sys
 import io
 import time
-import picamera
 from PIL import Image, ImageFilter
 import paho.mqtt.client as mqtt
 import cv2
@@ -47,27 +46,21 @@ client.on_message = onMessage
 client.connect(broker_address, 1883)
 client.loop_start()
 
-camera = None
-if (isPicamera):
-    camera = picamera.PiCamera(framerate=30)
-else:
-    camera = cv2.VideoCapture(0, cv2.CAP_V4L)
+camera = cv2.VideoCapture(0, cv2.CAP_V4L)
 
-while (True):
-    if (isStarted == True):
+while True:
+    if isStarted == True:
         stream = io.BytesIO()
-        if (isPicamera):
-            camera.capture(stream, format='jpeg', use_video_port=True)
-        else:
-            ret, frame = camera.read()
-            Image.fromarray(frame).save(stream, format='JPEG')
+
+        ret, frame = camera.read()
+        Image.fromarray(frame).save(stream, format='JPEG')
 
         stream.seek(0)
         client.publish("mjpeg", stream.read(), qos=0)
         pass
 
     # 거리 송신에 대한 요청이 있으면
-    if (isDistance == True):
+    if isDistance == True:
         distance = hw4gpio.measureDistance()  # 거리 읽어옴
         client.publish("distance", str(distance), qos=0)
         pass
