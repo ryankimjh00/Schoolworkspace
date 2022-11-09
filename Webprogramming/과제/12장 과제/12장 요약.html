@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>12장 요약_2191298 김종현</title>
+</head>
+<body>
+<h1 id="12-">12장 요약</h1>
+<ul>
+    <li>HTML5 의 웹 저장소
+        <ul>
+            <li>사용자의 로컬 컴퓨터에 일부 데이터 저장
+                <ul>
+                    <li>웹 서버의 저장 용량 및 통신 트래픽 감소</li>
+                </ul>
+            </li>
+            <li>저장소 종류
+                <ul>
+                    <li>쿠키, 웹 스토리지, 로컬 파일, 인덱스트 데이터베이스</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>HTTP/1.1 은 요청과 수락을 한번만 보냄</li>
+    <li>HTTTP 통신 과정 보기 F12
+        <ul>
+            <li>첫번째 HTTP 세션의 HTTP 요청 헤더와 응답 헤더</li>
+        </ul>
+    </li>
+    <li>쿠키
+        <ul>
+            <li>웹 서버가 브라우저에게 지시하여 사용자 로컬 컴퓨터에 저장하는 4KB 이하의 작은 데이터</li>
+            <li>HTTP의 무상태 프로토콜의 약점을 보완하기 위해 등장</li>
+            <li>생성 과정
+                <ul>
+                    <li>쿠키는 웹 서버가 생성하여 브라우저로 보냄
+                        <ul>
+                            <li>사용자가 어떤 웹 서버에 처음 접속할 때</li>
+                            <li>웹 서버가 다음 요청에서 그 사용자를 기억할 수 있도록 쿠키를 만들어 전송</li>
+                        </ul>
+                    </li>
+                    <li>쿠키를 받은 브라우저는 로컬 컴퓨터에 저장</li>
+                    <li>로컬 컴퓨터에서 동일한 웹 서버에 요청할 때 쿠키를 함께 전송</li>
+                    <li>쿠키를 받은 웹 서버는 어떤 사용자로부터 요청이 왔는지 알 수 있음</li>
+                </ul>
+            </li>
+            <li>구성
+                <ul>
+                    <li><code>name, Expire, Domain, Path, Secure, SameSite</code></li>
+                    <li>브라우저가 웹 서버로 쿠키를 전송할 때는 name = value 만 전송</li>
+                </ul>
+            </li>
+            <li>웹 페이지 사이의 정보 공유에 활용</li>
+        </ul>
+    </li>
+    <li><p>자바스크립트로 쿠키 다루기</p>
+        <ul>
+            <li>자바스크립트 코드를 이용하여 로컬 컴퓨터에 쿠키 r/w 가능</li>
+            <li><p>쿠키 쓰기</p>
+                <ul>
+                    <li><p><code>let cookieStr = name + &quot;=&quot; + escape(value) + ((expireDate == null)?&quot;&quot;:
+                        (&quot;;expires=&quot; + expireDate.toGMTString()));</code></p>
+                        <p><code>document.cookie = cookieStr;</code></p>
+                    </li>
+                </ul>
+            </li>
+            <li><p>쿠키 읽기</p>
+                <ul>
+                    <li><code>let pairs = document.cookie.split(&quot;;&quot;);</code></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>쿠키 활용 실습(예제 12-1)</li>
+    <li>웹 스토리지
+        <ul>
+            <li>웹 어플리케이션으로 진화</li>
+            <li>쿠키는 불필요한 트래픽 발생, 윈도우마다 독립적인 값 저장 불가</li>
+            <li>세션 스토리지와 로컬 스토리지로 나뉨
+                <ul>
+                    <li>문자열만 저장, (키, 값)으로 구성된 아이템 단위로 저장</li>
+                    <li>동일한 키를 가진 아이템은 존재 불가</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>세션 스토리지
+        <ul>
+            <li>세션: 연결된 웹 사이트와 윈도우</li>
+            <li>윈도우에 웹 사이트가 로드될 때 세션 스토리지 생성(여러개 생성 가능)</li>
+            <li>윈도우가 닫힐때 세션 스토리지 소멸</li>
+            <li>윈도우 사이에서는 공유되지 않음(윈도우마다 별도 생성)</li>
+        </ul>
+    </li>
+    <li>로컬 스토리지
+        <ul>
+            <li>윈도우에 상관없이 웹 서버(사이트) 당 하나씩 생성</li>
+            <li>브라우저 종료, 컴퓨터 종료해도 존재</li>
+            <li>웹 사이트의 모든 페이지가 웹 스토리지 공유</li>
+        </ul>
+    </li>
+    <li>Storage 인터페이스
+        <ul>
+            <li><code>length, [], key(index), setItem(key, val), getItem(key), removeItem(key), clear()</code></li>
+            <li>웹 스토리지 지원 확인: <code>f(!window.sessionStorage){ alert(&quot;&quot;); ... }</code></li>
+            <li>아이템 저장 및 변경: <code>setItem()</code> 이나 [] 연산자</li>
+            <li>아이템 읽기: <code>getItem()</code>이나 [] 연산자</li>
+            <li>아이템 삭제: <code>removeItem()</code></li>
+            <li>모든 아이템 삭제: <code>clear()</code></li>
+        </ul>
+    </li>
+    <li>storage 이벤트: 웹 스토리지 변경 시 발생
+        <ul>
+            <li>아이템 추가, 삭제, 전체 삭제, 아이템 값 변경 등의 경우</li>
+            <li>모든 윈도우에게 전달</li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>
