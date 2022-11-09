@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <title>일기 보기_2191298 김종현</title>
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        span {
+            border: 1px solid grey;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>일기 보기</h3>
+<hr>
+<script>
+    if (window.localStorage) {
+        document.write("<table>");
+        for (let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+            let val = localStorage.getItem(key);
+            document.write("<tr>");
+            document.write("<td>" + (i + 1) + "</td>");
+            document.write("<th>" + key + "</th>");
+            document.write("<td>" + val + "</td>");
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    } else if (!window.localStorage) {
+        alert("로컬스토리지를 지원하지 않습니다.");
+    }
+</script>
+</body>
+</html>

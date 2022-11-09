@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>일기쓰기_2191298_김종현</title>
+
+</head>
+<body>
+<h3>일기 쓰기</h3>
+<hr>
+<div id="diary_date"></div>
+<textarea id="diary" cols="40"  rows="10"></textarea><br>
+<input onclick="save()" type="button" value="저장">
+<input onclick="window.open('./12장-4_view.html')" type="button" value="보기">
+<script>
+    date = new Date();
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    day = date.getDate();
+    let today = year + "." + month + "." + day;
+    document.getElementById("diary_date").innerHTML = "오늘: " + today;
+
+    function save() {
+        if (!window.localStorage) {
+            alert("이 브라우저에서 local Storage를 지원하지 않습니다");
+        }
+        let diary = document.getElementById("diary").value;
+        localStorage.setItem(today, diary);
+    }
+
+</script>
+</body>
+</html>
