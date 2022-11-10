@@ -14,6 +14,8 @@ isDistance = False  # 거리를 수신하고 있으면 True
 isOn = False  # Led가 켜져있으면 True
 myqueue = queue.Queue()
 
+# controller가 계쏙 거리를 보내주는데, 나는 걔한테 distance라는 데이터를 보내달라고 하는것
+# onconnect가 됐을때 subscribe를 하는것
 
 def onStart():
     client.publish("command", "start")  # 영상 송신 요청
@@ -65,9 +67,7 @@ def onConnect(client, userdata, flag, rc):
 
 def onMessage(client, userdata, msg):
     global distanceLabel
-
     # 이미지 데이터가 바이트 배열로 도착, 이것은 보내는쪽에서 바이트배열로 보내야함을 의미함
-
     if (msg.topic == "mjpeg"):
         bytes = msg.payload
 
@@ -93,7 +93,7 @@ Button(buttonFrame, text="start", overrelief="solid", width=15, command=onStart)
 Button(buttonFrame, text="stop", overrelief="solid", width=15, command=onStop).pack(side=LEFT)
 Button(buttonFrame, text="exit", overrelief="solid", width=15, command=onExit).pack(side=RIGHT)
 controlFrame = Frame(window, borderwidth=1)
-controlFrame.pack(side=TOP, fill=BOTH);
+controlFrame.pack(side=TOP, fill=BOTH)
 Button(controlFrame, text="LED ON", overrelief="solid", width=15, command=onLedOn).pack(side=LEFT)
 Button(controlFrame, text="LED OFF", overrelief="solid", width=15, command=onLedOff).pack(side=LEFT)
 Button(controlFrame, text="Distance ON/OFF", overrelief="solid", width=15, command=onDistance).pack(side=RIGHT)

@@ -23,14 +23,13 @@ GPIO.output(trig, False)
 
 onOff = False
 
-
 # 작성
 def ledOnOff(onOff):
     GPIO.output(led, onOff)
 
-
 # 작성
 def measureDistance():
+    global trig, echo
     time.sleep(0.5)
     GPIO.output(trig, True)
     time.sleep(0.00001)
