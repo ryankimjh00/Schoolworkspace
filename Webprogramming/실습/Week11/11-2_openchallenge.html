@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+
+</head>
+<body onsubmit="return false">
+<form>
+    영어<input id="eng" size="20" type="text"><br>
+    한글<input id="kor" size="20" type="text"><br>
+    <button id="save" onclick="store()">단어 저장</button>
+    <button onclick="searchWord()">영단어 검색</button>
+    <button>단어 삭제</button>
+    <button onclick="view()">전체 보기</button>
+</form>
+<script>
+
+
+    function store() {
+        let eng = document.getElementById("eng").value;
+        let kor = document.getElementById("kor").value;
+        localStorage.setItem(eng, kor);
+    }
+
+    function view() {
+        window.open('./view.html');
+    }
+
+    function searchWord() {
+        let eng = document.getElementById("eng").value;
+        let kor = document.getElementById("kor");
+        let val = localStorage.getItem(eng);
+        kor.value = val;
+    }
+</script>
+
+
+</body>
+</html>
