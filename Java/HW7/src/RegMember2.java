@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.awt.BorderLayout;
@@ -20,7 +21,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
-public class RegMember1 extends JFrame {
+public class RegMember2 extends JFrame {
 	JTextField name;
 	ButtonGroup group;
 	JTextField Serial_1;
@@ -31,7 +32,7 @@ public class RegMember1 extends JFrame {
 	String hobby_collector = "";
 	String sex = "";
 
-	public RegMember1() {
+	public RegMember2() {
 		super("2191298 김종현 HW7");
 		buildGUI();
 		this.setBounds(400, 200, 380, 420);
@@ -70,7 +71,7 @@ public class RegMember1 extends JFrame {
 	private JPanel NameAndSex() {
 		name = new JTextField(8);
 		group = new ButtonGroup();
-
+		name.addActionListener(key_handler);
 		JRadioButton man = new JRadioButton("남성", false);
 		JRadioButton woman = new JRadioButton("여성", false);
 		man.addActionListener(btn_handler);
@@ -131,6 +132,7 @@ public class RegMember1 extends JFrame {
 			hobbys[i] = new JCheckBox(hobby_name[i]);
 			panel.add(hobbys[i]);
 			hobbys[i].addItemListener(handler);
+			hobbys[i].addActionListener(btn_handler);
 		}
 		return panel;
 	}
@@ -162,8 +164,8 @@ public class RegMember1 extends JFrame {
 					String serial_t2 = Serial_2.getText();
 					String department_t = department.getText();
 					String hobby_t = hobby_collector;
-					introducetext.setText("이름: " + name_t + '\n' + "주민등록번호: " + serial_t + "-" + serial_t2 + '\n'
-							+ "부서명: " + department_t + '\n' + "취미: " + hobby_t + '\n' + "성별: " + sex);
+//					introducetext.setText("이름: " + name_t + '\n' + "주민등록번호: " + serial_t + "-" + serial_t2 + '\n'
+//							+ "부서명: " + department_t + '\n' + "취미: " + hobby_t + '\n' + "성별: " + sex);
 				}
 
 			}
@@ -174,11 +176,11 @@ public class RegMember1 extends JFrame {
 	private ItemListener handler = new ItemListener() {
 		public void itemStateChanged(ItemEvent e) {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				for(int i=0; i<hobbys.length; i++) {
+				for (int i = 0; i < hobbys.length; i++) {
 					if (e.getItem() == hobbys[i]) {
 						hobby_collector += hobbys[i].getText() + " ";
-						
 					}
+					introducetext.setText(hobby_collector + " ");
 				}
 			}
 		}
@@ -189,7 +191,26 @@ public class RegMember1 extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			JRadioButton src = (JRadioButton) e.getSource();
 			sex = e.getActionCommand();
+			hobby_collector = e.getActionCommand();
+			introducetext.append(hobby_collector);
+			introducetext.append(sex);
+		}
+	};
+	
+	private ActionListener key_handler = new ActionListener() {
+
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				String txt = (String) e.getSource();
+				introducetext.setText(txt);
+			}
 		}
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	};
 }
