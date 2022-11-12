@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -26,14 +27,15 @@ public class RegMember2 extends JFrame {
 	ButtonGroup group;
 	JTextField Serial_1;
 	JTextField Serial_2;
+	JTextField address;
 	JTextField department;
-	JTextArea introducetext;
+	JTextArea introduce;
 	JCheckBox[] hobbys;
 	String hobby_collector = "";
 	String sex = "";
 
 	public RegMember2() {
-		super("2191298 김종현 HW7");
+		super("2191298 김종현 HW7_단계 (2)");
 		buildGUI();
 		this.setBounds(400, 200, 380, 420);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,18 +66,18 @@ public class RegMember2 extends JFrame {
 
 	private JPanel createSouthPanel() {
 		JPanel southPanel = new JPanel(new FlowLayout());
-		southPanel.add(Button());
 		return southPanel;
 	}
 
 	private JPanel NameAndSex() {
 		name = new JTextField(8);
-		group = new ButtonGroup();
-		name.addActionListener(key_handler);
+		
+		name.addKeyListener(new MyKeyListener());
 		JRadioButton man = new JRadioButton("남성", false);
 		JRadioButton woman = new JRadioButton("여성", false);
-		man.addActionListener(btn_handler);
-		woman.addActionListener(btn_handler);
+		man.addActionListener(radiobutton_handler);
+		woman.addActionListener(radiobutton_handler);
+		group = new ButtonGroup();
 		group.add(man);
 		group.add(woman);
 		JLabel name_index = new JLabel("성                 명");
@@ -95,9 +97,11 @@ public class RegMember2 extends JFrame {
 		JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		Serial_1 = new JTextField(6);
 		Serial_2 = new JTextField(7);
-		JLabel serialNumber = new JLabel("주민등록번호 ");
+		Serial_1.addKeyListener(new MyKeyListener());
+		Serial_2.addKeyListener(new MyKeyListener());
+		JLabel serialNumberLabel = new JLabel("주민등록번호 ");
 		JLabel hypen = new JLabel("-");
-		panel.add(serialNumber);
+		panel.add(serialNumberLabel);
 		panel.add(Serial_1);
 		panel.add(hypen);
 		panel.add(Serial_2);
@@ -106,18 +110,20 @@ public class RegMember2 extends JFrame {
 
 	private JPanel Address() {
 		JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JTextField text = new JTextField(22);
-		JLabel address = new JLabel("주                 소");
+		address = new JTextField(22);
+		address.addKeyListener(new MyKeyListener());
+		JLabel addressLabel = new JLabel("주                 소");
+		panel.add(addressLabel);
 		panel.add(address);
-		panel.add(text);
 		return panel;
 	}
 
 	private JPanel Department() {
 		JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		department = new JTextField(8);
-		JLabel department_index = new JLabel("부      서      명 ");
-		panel.add(department_index);
+		department.addKeyListener(new MyKeyListener());
+		JLabel departmentLabel = new JLabel("부      서      명 ");
+		panel.add(departmentLabel);
 		panel.add(department);
 		return panel;
 	}
@@ -126,91 +132,52 @@ public class RegMember2 extends JFrame {
 		hobbys = new JCheckBox[4];
 		String[] hobby_name = { "영화", "음악감상", "사진", "운동" };
 		JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel hobby = new JLabel("취               미");
-		panel.add(hobby);
+		JLabel hobbyLabel = new JLabel("취               미");
+		panel.add(hobbyLabel);
 		for (int i = 0; i < hobbys.length; i++) {
 			hobbys[i] = new JCheckBox(hobby_name[i]);
 			panel.add(hobbys[i]);
-			hobbys[i].addItemListener(handler);
-			hobbys[i].addActionListener(btn_handler);
+			hobbys[i].addActionListener(checkbox_handler);
 		}
 		return panel;
 	}
 
 	private JPanel Introduce() {
 		JPanel panel = new JPanel(new BorderLayout());
-		introducetext = new JTextArea(" ", 9, 22);
-		JLabel introduce = new JLabel(" 자   기   소   개");
-		panel.add(introduce, BorderLayout.NORTH);
-		panel.add(introducetext, BorderLayout.CENTER);
+		introduce = new JTextArea(" ", 9, 22);
+		JLabel introduceLabel = new JLabel(" 자   기   소   개");
+		panel.add(introduceLabel, BorderLayout.NORTH);
+		panel.add(introduce, BorderLayout.CENTER);
 		return panel;
 	}
 
-	private JPanel Button() {
-		JPanel panel = new JPanel(new GridLayout(1, 0));
-		JButton savebtn;
-		JButton exitbtn;
-
-		savebtn = new JButton("저장");
-		panel.add(savebtn, BorderLayout.EAST);
-		exitbtn = new JButton("종료");
-		panel.add(exitbtn, BorderLayout.EAST);
-		savebtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() == savebtn) {
-					String name_t = name.getText();
-					// String sex_t = group.;
-					String serial_t = Serial_1.getText();
-					String serial_t2 = Serial_2.getText();
-					String department_t = department.getText();
-					String hobby_t = hobby_collector;
-//					introducetext.setText("이름: " + name_t + '\n' + "주민등록번호: " + serial_t + "-" + serial_t2 + '\n'
-//							+ "부서명: " + department_t + '\n' + "취미: " + hobby_t + '\n' + "성별: " + sex);
-				}
-
-			}
-		});
-		return panel;
-	}
-
-	private ItemListener handler = new ItemListener() {
-		public void itemStateChanged(ItemEvent e) {
-			if (e.getStateChange() == ItemEvent.SELECTED) {
-				for (int i = 0; i < hobbys.length; i++) {
-					if (e.getItem() == hobbys[i]) {
-						hobby_collector += hobbys[i].getText() + " ";
-					}
-					introducetext.setText(hobby_collector + " ");
-				}
-			}
-		}
-	};
-
-	private ActionListener btn_handler = new ActionListener() {
+// radio button이 눌리면 바로 출력해주는 매서드
+	private ActionListener radiobutton_handler = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			JRadioButton src = (JRadioButton) e.getSource();
 			sex = e.getActionCommand();
-			hobby_collector = e.getActionCommand();
-			introducetext.append(hobby_collector);
-			introducetext.append(sex);
+			introduce.append(sex + "\n");
 		}
 	};
 	
-	private ActionListener key_handler = new ActionListener() {
+// check box가 눌리면 바로 출력해주는 매서드
 
-		public void keyPressed(KeyEvent e) {
-			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				String txt = (String) e.getSource();
-				introducetext.setText(txt);
-			}
-		}
-
+	private ActionListener checkbox_handler = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
+			hobby_collector = e.getActionCommand();
+			introduce.append(hobby_collector + " ");
 		}
-		
 	};
+
+// 엔터를 치면 바로 출력해주는 내부 클래스
+	public class MyKeyListener extends KeyAdapter {
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				JTextField lableName = (JTextField) e.getSource();
+				String inputText = lableName.getText();
+				introduce.append(inputText + "\n");
+			}
+		}
+	}
 }

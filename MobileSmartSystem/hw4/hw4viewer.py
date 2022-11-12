@@ -55,6 +55,8 @@ def onDistance():  # 거리 송신 요청
     global isDistance
     isDistance = True if isDistance == False else False
     client.publish("command", "distance")
+    client.subscribe("distance")  # def onDistance()의 내부에 작성했습니다.
+
     pass
 
 
