@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<h1 id="13-">13장 요약</h1>
+<ul>
+    <li>HTML5에서 플러그인의 도움 없이 오디오/비디오 삽입
+        <ul>
+            <li><code>&lt;audio&gt; &lt;video&gt;</code> 태그 사용</li>
+        </ul>
+    </li>
+    <li>audio 태그
+        <ul>
+            <li>오디오 DOM 객체 알아내기
+                <ul>
+                    <li><code>let audio = document.getElementById(&quot;audio&quot;)</code></li>
+                </ul>
+            </li>
+            <li><code>audio.play()</code>, <code>audio.pause()</code> , <code>audio.load()</code> , <code>audio.volume
+                += 0.1</code> , <code>audio.muted = true;</code></li>
+        </ul>
+    </li>
+    <li>onended 리스너
+        <ul>
+            <li>audio video의 재생이 끝나면 호출되는 리스너</li>
+        </ul>
+    </li>
+    <li>위치 정보 서비스
+        <ul>
+            <li>geolocation 객체
+                <ul>
+                    <li>위치 정보 서비스를 제공하는 자바스크립트 객체
+                        <ul>
+                            <li><code>navigator.geolocation , window.navigator.geolocation</code></li>
+                            <li><code>getCurrentPosition() - 현재 위치 얻기, watchPosition()- 위치가 변경될 때마다 알려주는 반복 위치 서비스 시작,
+                                clearWatch()-반복 위치 서비스 중단</code></li>
+                        </ul>
+                    </li>
+                    <li>현재 위치 얻기
+                        <ul>
+                            <li><code>navigator.geolocation.getCurrentPosition(success); // success()를 콜백 함수로 등록
+                                function success(position){
+                                let latitude = position.coords.latitude;
+                                let longitude = position.coords.longitude;
+                                alert(&quot;현재 위치(&quot; + latitude + &quot;,&quot; + longitude + &quot;)&quot;);
+                                }</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>웹 페이지에 지도 넣기
+                <ul>
+                    <li>openstreetmap.org</li>
+                </ul>
+            </li>
+            <li>반복 위치 서비스
+                <ul>
+                    <li>위치 변경 시마다 현재 위치 얻기
+                        <ul>
+                            <li>watchPosition() 호출
+                                <ul>
+                                    <li>위치가 변경될 때마다 호출되는 콜백 함수 등록 : <code>let watchID =
+                                        navigator.geolocation.watchPosition(changed);</code></li>
+                                    <li><code>watchPosition()</code>의 리턴값: 반복 위치 서비스 id</li>
+                                </ul>
+                            </li>
+                            <li><code>clearWatch()</code> 호출로 중단</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>웹 워커
+        <ul>
+            <li>백그라운드 테스크를 만드는 기능</li>
+            <li>워커 태스크
+                <ul>
+                    <li>웹 워커 기능을 이용하여 만든 백그라운드 태스크</li>
+                    <li>워커 태스크를 만들 js 코드 준비</li>
+                    <li>워커 태스크와 워커 객체 생성</li>
+                    <li>독립적으로 실행되는 작업 단위</li>
+                    <li>워커 객체
+                        <ul>
+                            <li>워커 태스크로부터 이벤트와 데이터 주고 받기</li>
+                            <li>워커 태스크 중단 등 워커 테스크를 제어하는 객체</li>
+                            <li><code>Worker()</code> = 워커 태스크 생성</li>
+                            <li><code>postMessage()</code> = 워커 태스크에 메세지 전송, 워커 태스크에는 message 이벤트 발생</li>
+                            <li><code>terminate()</code> = 즉각 어커 태스크의 실행을 종료</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>message 이벤트 보내는 과정
+                <ul>
+                    <li>워커 태스크에서 postMessage 호출
+                        <ul>
+                            <li>매개변수에 보내고자 하는 데이터 전달</li>
+                            <li><code>postMessage(sum) //sum = 5</code></li>
+                        </ul>
+                    </li>
+                    <li>데이터를 MessageEvent 객체로 만들어 전달
+                        <ul>
+                            <li>워커 객체에서 MessageEvent 객체를 통해 데이터 수신</li>
+                            <li>MessageEvent 객체의 프로퍼티
+                                <ul>
+                                    <li>data : 전달되는 값으로서 문자열이거나 객체</li>
+                                </ul>
+                            </li>
+                            <li>워커 객체의 onmessage 리스너
+                                <ul>
+                                    <li>워커 태스크가 보내는 message 이벤트를 받는 코드</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>워커 태스크 종료
+                <ul>
+                    <li>워커 태스크 스스로 종료
+                        <ul>
+                            <li><code>close()</code></li>
+                        </ul>
+                    </li>
+                    <li>워커 객체가 워커 태스크를 강제 종료
+                        <ul>
+                            <li><code>terminate() 메소드 -ex) addWorker.terminate()</code></li>
+                        </ul>
+                    </li>
+                    <li>워커 태스크가 종료하면 워커 객체를 더 이상 워커 태스크와 message 이벤트를 주고받을 수 없다.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+
+</body>
+</html>
