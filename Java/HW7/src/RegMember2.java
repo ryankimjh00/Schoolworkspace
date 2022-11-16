@@ -32,7 +32,6 @@ public class RegMember2 extends JFrame {
 	JTextArea introduce;
 	JCheckBox[] hobbys;
 	String hobby_collector = "";
-	String sex = "";
 
 	public RegMember2() {
 		super("2191298 김종현 HW7_단계 (2)");
@@ -75,8 +74,10 @@ public class RegMember2 extends JFrame {
 		name.addKeyListener(new MyKeyListener());
 		JRadioButton man = new JRadioButton("남성", false);
 		JRadioButton woman = new JRadioButton("여성", false);
-		man.addActionListener(radiobutton_handler);
-		woman.addActionListener(radiobutton_handler);
+		//man.addActionListener(radiobutton_handler);
+		//woman.addActionListener(radiobutton_handler);
+		man.addItemListener(radiobutton_item_handler);
+		woman.addItemListener(radiobutton_item_handler);
 		group = new ButtonGroup();
 		group.add(man);
 		group.add(woman);
@@ -137,7 +138,9 @@ public class RegMember2 extends JFrame {
 		for (int i = 0; i < hobbys.length; i++) {
 			hobbys[i] = new JCheckBox(hobby_name[i]);
 			panel.add(hobbys[i]);
-			hobbys[i].addActionListener(checkbox_handler);
+			// hobbys[i].addActionListener(checkbox_handler);
+			hobbys[i].addItemListener(checkbox_item_handler);
+			
 		}
 		return panel;
 	}
@@ -155,9 +158,23 @@ public class RegMember2 extends JFrame {
 	private ActionListener radiobutton_handler = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			sex = e.getActionCommand();
+			String sex = e.getActionCommand();
 			introduce.append(sex + "\n");
 		}
+	};
+	
+//ActionListener radiobutton_handler 가 중복되는 눌림이 계속 뜨는것을 보완하기 위해 item 리스너를 사용한다.
+	private ItemListener radiobutton_item_handler = new ItemListener() {
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			if(e.getStateChange() == ItemEvent.SELECTED) {
+				JRadioButton src = (JRadioButton)e.getSource(); // 다운캐스팅 해서 유지
+				String txt = src.getText();
+				
+				introduce.append("성별: " + txt + "\n");
+			}
+		}
+		
 	};
 	
 // check box가 눌리면 바로 출력해주는 매서드
@@ -168,6 +185,19 @@ public class RegMember2 extends JFrame {
 			hobby_collector = e.getActionCommand();
 			introduce.append(hobby_collector + " ");
 		}
+	};
+	
+	private ItemListener checkbox_item_handler = new ItemListener() {
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			if(e.getStateChange() == ItemEvent.SELECTED) {
+				JCheckBox src = (JCheckBox)e.getSource(); // 다운캐스팅 해서 유지
+				String txt = src.getText();
+				
+				introduce.append("취미: " + txt + "\n");
+			}
+		}
+		
 	};
 
 // 엔터를 치면 바로 출력해주는 내부 클래스

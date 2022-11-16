@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>2191298 김종현 OpenChallenge13</title>
+
+</head>
+<h3>오디오 리스트 연속 재생 - OpenChallenge 13</h3>
+<hr>
+<p>
+    처음 play 버튼을 누르면 리스트에 있는 곡이 연속하여 자동 재생 됩니다. 마우스로 다른 곡을 선택하면 곡이 바뀝니다.
+    next 버튼을 누르면 다음 곡으로 넘어갑니다.
+</p>
+<hr>
+<audio controls id="audio"></audio>
+<div>
+    <select id="music" onchange="nextMusic()" size=5>
+        <option selected value="./media/how_are_you.mp3">how_are_you</option>
+        <option value="./media/Morning_Kiss.mp3">Morning Kiss</option>
+        <option value="./media/Tongtong.mp3">Tongtong</option>
+    </select>
+    <button id="play" onclick="playMusic()">play</button>
+    <button id="next" onclick="nextMusic()">next</button>
+</div>
+<div id="msg">현재 연주되는 곡명이 보입니다.</div>
+<script>
+    let index = 0;
+    let audio = document.getElementById("audio");
+    let music = document.getElementById("music");
+    let message = document.getElementById("msg");
+
+
+    function playMusic() {
+        audio.src = music.options[index].value;
+        audio.load();
+        audio.play();
+        message.innerHTML = music.options[index].value + " 재생중";
+    }
+
+
+    function nextMusic() {
+        index++;
+        index %= music.length;
+        music.selectedIndex = index;
+        playMusic(music.selectedIndex);
+    }
+
+    audio.onended = function () {
+        index++;
+        index %= music.length;
+        playMusic(index);
+    }
+</script>
+</html>
