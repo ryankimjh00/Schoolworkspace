@@ -157,7 +157,6 @@ public class RegMember1 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == savebtn) {
 					String name_t = name.getText();
-					// String sex_t = group.;
 					String serial_t = Serial_1.getText();
 					String serial_t2 = Serial_2.getText();
 					String department_t = department.getText();
