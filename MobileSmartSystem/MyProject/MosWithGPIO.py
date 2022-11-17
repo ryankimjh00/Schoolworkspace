@@ -48,6 +48,7 @@ def MosTest():
     print(mos)
     print(mos_list)
 
+
 # 작성
 def ledOnOff(onOff):
     GPIO.output(led, onOff)
@@ -58,15 +59,16 @@ def ledOnOff(onOff):
             # print("short  ")
             GPIO.output(led, onOff)
             time.sleep(0.5)
-            mos_list.append("깜빡")
+            # mos_list.append("깜빡")
         elif mos[i] == '-':
             # print("long  ")
-            time.sleep(0.5)
-            mos_list.append("깜---빡")
+            GPIO.output(led, onOff)
+            time.sleep(1)
+            # mos_list.append("깜---빡")
         else:
             # print("term  ")
-            time.sleep(0.5)
-            mos_list.append("******")
+            time.sleep(1.5)
+            # mos_list.append("******")
     print(mos)
     print(mos_list)
 

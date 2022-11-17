@@ -40,17 +40,5 @@
         message.innerHTML = music.options[index].value + " 재생중";
     }
 
-    function nextMusic() {
-        index++;
-        index %= music.length;
-        music.selectedIndex = index;
-        playMusic(music.selectedIndex);
-    }
-
-    audio.onended = function () {
-        index++;
-        index %= music.length;
-        playMusic(index);
-    }
 </script>
 </html>
