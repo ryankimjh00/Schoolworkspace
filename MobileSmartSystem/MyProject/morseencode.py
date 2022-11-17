@@ -51,8 +51,9 @@ mod_dict = {
 
 def createMos(self, alpha):
     alpha = alpha.upper()
-    convert = list(map(lambda y: self.mos_dictp[y].alpha))
+    convert = list(map(lambda y: self.mos_dict[y], alpha))
     return ''.join(convert)
+
 
 
 def lightMos(self, mos):
