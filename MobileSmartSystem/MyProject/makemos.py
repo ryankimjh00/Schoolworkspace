@@ -1,4 +1,3 @@
-# 모스코드의 대한 정의
 import re
 
 
@@ -11,8 +10,6 @@ def get_morse_code_dict():
     return morse_code
 
 
-# 영어 문장 데이터가 잘 맞는지 확인
-# 특수문자와 숫자가 들어가 있으면 에러처리 
 def is_validated_english_sentence(user_input):
     var = list(user_input)
     for s in range(len(var)):
@@ -28,7 +25,6 @@ def is_validated_english_sentence(user_input):
     return True
 
 
-# 영어 문장내 문장내 문장부호 삭제 그리고 공백 제거 함수
 def get_cleaned_english_sentence(raw_english_sentence):
     var = re.sub('[.,!?]', '', raw_english_sentence)
     var = var.upper()
@@ -36,7 +32,6 @@ def get_cleaned_english_sentence(raw_english_sentence):
     return var
 
 
-# 영어문장으로 입력된 값에 대하여 값을 반환
 def encoding_character(english_character):
     morse_code_dict = get_morse_code_dict()
 
@@ -45,7 +40,7 @@ def encoding_character(english_character):
             return values
 
 
-# 영어문장으로 입력된 문자열을 모스코드로 변환
+# 영어문장으로 입력된 문자열을 모스코드로
 def encoding_sentence(english_sentence):
     morse = get_cleaned_english_sentence(english_sentence)
     morse = list(morse)
@@ -62,13 +57,10 @@ def encoding_sentence(english_sentence):
     return result
 
 
-# 메인 작동
 def makeMos(message):
-    print("Morse Code Program!!")
-    # ===Modify codes below=============
     while True:
         if message == '0':  # 0 입력되면 종료
             break
-        elif is_validated_english_sentence(message):  # 정상적인 문장이 입력되었을때
+        elif is_validated_english_sentence(message):
             result = encoding_sentence(message)
             return result

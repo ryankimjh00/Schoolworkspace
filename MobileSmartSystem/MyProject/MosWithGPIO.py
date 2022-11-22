@@ -1,8 +1,3 @@
-# hw4gpio.py
-# 이 프로그램은 전부 프로그램하여야 합니다.
-# 이 프로그램은 hw4controller.py에서 사용하는 모든 함수를 만족하도록 프로그램되어야 합니다.
-# measuerDistance(), ledOnOff(boolean) 만 만들면됨
-
 import io
 import time
 from PIL import Image, ImageFilter
@@ -21,7 +16,6 @@ GPIO.setup(led, GPIO.OUT)
 GPIO.setup(echo, GPIO.IN)
 GPIO.setup(trig, GPIO.OUT)
 GPIO.output(trig, False)
-
 onOff = False
 
 
@@ -32,29 +26,24 @@ def splitMos(message):
 
 
 # 작성
-def ledOnOff(message, onOff):
-    GPIO.output(led, onOff)
+def ledOnOff(message):
+    all_mos = makemos.makeMos(message)
     mos = splitMos(message)
-    # mos_list = []
+    print("check this out" + all_mos)
     for i in range(len(mos)):
         if mos[i] == '.':
-            # print("short  ")
             GPIO.output(led, True)
-            print("깜빡")
-            time.sleep(0.5)
+            time.sleep(0.2)
             GPIO.output(led, False)
-            # mos_list.append("깜빡")
+            time.sleep(0.3)
         elif mos[i] == '-':
-            # print("long  ")
             GPIO.output(led, True)
-            print("깜---빡")
-            time.sleep(1)
+            time.sleep(0.6)
             GPIO.output(led, False)
-            # mos_list.append("깜---빡")
+            time.sleep(0.3)
         else:
-            print("term  ")
-            time.sleep(1.5)
-            # mos_list.append("******")
+            GPIO.output(led, False)
+            time.sleep(2)
 
 
 # 작성
@@ -76,4 +65,4 @@ def measureDistance():
 
 
 if __name__ == "__main__":
-    ledOnOff("hello", onOff)
+    ledOnOff("sos")
