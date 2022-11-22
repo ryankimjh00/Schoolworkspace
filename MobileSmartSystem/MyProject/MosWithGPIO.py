@@ -9,6 +9,7 @@ from PIL import Image, ImageFilter
 import paho.mqtt.client as mqtt
 import cv2
 import RPi.GPIO as GPIO
+import makemos
 
 trig = 20
 echo = 16
@@ -23,54 +24,37 @@ GPIO.output(trig, False)
 
 onOff = False
 
-import test
 
-
-def splitMos():
-    mos = test.makeMos()
+def splitMos(message):
+    mos = makemos.makeMos(message)
     mos_list = list(mos)
     return mos_list
 
 
-def MosTest():
-    mos = splitMos()
-    mos_list = []
-    for i in range(len(mos)):
-        if mos[i] == '.':
-            # print("short  ")
-            mos_list.append("깜빡")
-        elif mos[i] == '-':
-            # print("long  ")
-            mos_list.append("깜---빡")
-        else:
-            # print("term  ")
-            mos_list.append("******")
-    print(mos)
-    print(mos_list)
-
-
 # 작성
-def ledOnOff(onOff):
+def ledOnOff(message, onOff):
     GPIO.output(led, onOff)
-    mos = splitMos()
-    mos_list = []
+    mos = splitMos(message)
+    # mos_list = []
     for i in range(len(mos)):
         if mos[i] == '.':
             # print("short  ")
-            GPIO.output(led, onOff)
+            GPIO.output(led, True)
+            print("깜빡")
             time.sleep(0.5)
+            GPIO.output(led, False)
             # mos_list.append("깜빡")
         elif mos[i] == '-':
             # print("long  ")
-            GPIO.output(led, onOff)
+            GPIO.output(led, True)
+            print("깜---빡")
             time.sleep(1)
+            GPIO.output(led, False)
             # mos_list.append("깜---빡")
         else:
-            # print("term  ")
+            print("term  ")
             time.sleep(1.5)
             # mos_list.append("******")
-    print(mos)
-    print(mos_list)
 
 
 # 작성
@@ -89,3 +73,7 @@ def measureDistance():
     pulse_duration = pulse_end - pulse_start
     return 340 * 100 / 2 * pulse_duration
     pass
+
+
+if __name__ == "__main__":
+    ledOnOff("hello", onOff)

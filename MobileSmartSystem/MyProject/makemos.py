@@ -59,21 +59,16 @@ def encoding_sentence(english_sentence):
         else:
             result += str(encoding_character(morse[i]))
 
-
     return result
 
 
 # 메인 작동
-def makeMos():
+def makeMos(message):
     print("Morse Code Program!!")
     # ===Modify codes below=============
-    game_on = True
-    while game_on:
-        user_input = input("Input your message: ")
-
-        if user_input == '0':  # 0 입력되면 종료
+    while True:
+        if message == '0':  # 0 입력되면 종료
             break
-        elif is_validated_english_sentence(user_input):  # 정상적인 문장이 입력되었을때
-            result = encoding_sentence(user_input)
+        elif is_validated_english_sentence(message):  # 정상적인 문장이 입력되었을때
+            result = encoding_sentence(message)
             return result
-
