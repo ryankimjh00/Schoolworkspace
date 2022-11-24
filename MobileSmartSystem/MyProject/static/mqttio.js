@@ -81,7 +81,7 @@ function startDisconnect() {
     document.getElementById("messages").innerHTML += '<span>Disconnected</span><br/>';
 }
 
-function getMessage(){
+function getMessage() {
     let message = document.getElementById("send")
     publish('led', message.value)
 }
