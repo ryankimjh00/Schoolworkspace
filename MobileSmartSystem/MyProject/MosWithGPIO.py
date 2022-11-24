@@ -46,6 +46,11 @@ def ledOnOff(message):
             time.sleep(2)
 
 
+def sendMos(message):
+    all_mos = makemos.makeMos(message)
+    return all_mos
+
+
 # 작성
 def measureDistance():
     global trig, echo
