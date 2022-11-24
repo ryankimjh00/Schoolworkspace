@@ -2,44 +2,118 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>웹소켓으로 MQTT 브로커에 접속</title>
+    <title>2191298_김종현_프로젝트</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js"
             type="text/javascript"></script>
     <script src="../static/mqttio.js" type="text/javascript"></script>
     <script>
         window.addEventListener("load", function () {
             // http://224..129:8080/에서 224...의 IP만 끊어내는 코드
-            var url = new String(document.location);
+            let url = new String(document.location);
             ip = (url.split("//"))[1]; // ip = "224...:8080/"
             ip = (ip.split(":"))[0]; // ip = "224..."
             document.getElementById("broker").value = ip
         });
     </script>
+    <style>
+        body {
+            background-color: powderblue;
+            font-family: "JetBrains Mono", serif;
+        }
+
+        .button {
+            background-color: lightslategray;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0px 8px 6px -6px #666;
+            font-family: "JetBrains Mono", serif;
+        }
+
+        #connection-form {
+            border: 2px solid black;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        #Mos_Signal_activator {
+            border: 2px solid black;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        #subscribe-form {
+            border: 2px solid black;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #tem, #hum {
+            width: 100px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+        }
+
+        #bri, #ultra {
+            width: 500px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+
+        }
+    </style>
 </head>
 <body>
-<h3>Raspberry 제어 및 모니터링</h3>
-<hr>
+<h3>모스부호 생성기 및 생존키트</h3>
+<b>내 기기 정보 확인하기</b>
 <form id="connection-form">
-    <b>브로커 IP:</b>
+    <b>브로커 IP</b>
     <input id="broker" name="broker" type="text" value=""><br>
-    <b>포트 번호 : 9001</b><br>
-    <input onclick="startConnect()" type="button" value="Connect">
-    <input onclick="startDisconnect()" type="button" value="Disconnect">
+    <b>포트 번호 9001</b><br>
+    <input onclick="startConnect()" type="button" class="button" value="전원 ON">
+    <input onclick="startDisconnect()" type="button" class="button" value="전원 OFF">
 </form>
-<hr>
-<h3>Led 제어(토픽:led)</h3>
-<hr>
-<form id="LED-control-form">
-    <label>make mos <input name="led" id = "send" type="text"></label>
-    <input type="button" value="모스부호 만들기" name="mos" onclick="getMessage()">
+<b>모스 부호 생성기</b>
+<form id="Mos_Signal_activator">
+    <label>변환할 단어를 입력하고 버튼을 클릭하세요<br>
+        <input name="led" id="send" type="text" value="SOS"></label>
+    <input type="button" value="모스부호 만들기" name="mos" class="button" onclick="getMessage()">
 </form>
-<hr>
-<h3>초음파 센서를 이용한 거리 측정(토픽:ultrasonic)</h3>
-<hr>
+<b>내가 있는 환경 분석</b>
 <form id="subscribe-form">
-    <input onclick="subscribe('ultrasonic')" type="button" value="측정시작">
-    <input onclick="unsubscribe('ultrasonic')" type="button" value="측정중단">
-</form>
+    <input onclick="subscribe('ultrasonic'); subscribe('temperature'); subscribe('humidity'); subscribe('brightness'); subscribe('mosSignal')"
+           type="button" class="button" value="측정시작">
+    <input onclick="unsubscribe('ultrasonic'); unsubscribe('temperature'); unsubscribe('humidity'); unsubscribe('brightness')"
+           type="button" class="button" value="측정종료">
+    <table id="info">
+        <tr>
+            <td>온도</td>
+            <td>습도</td>
+            <td>밝기</td>
+            <td>거리</td>
+        </tr>
+        <tr>
+            <td id="tem">
+                <div id="temperature">- °C</div>
+            </td>
+            <td id="hum">
+                <div id="humidity">- %</div>
+            </td>
+            <td id="bri">
+                <div id="brightness">- lux</div>
+            </td>
+            <td id="ultra">
+                <div id="ultrasonic">- cm</div>
+            </td>
+        </tr>
+    </table>
+</form><br>
 <div id="messages"></div>
 </body>
 </html>

@@ -5,11 +5,18 @@ import paho.mqtt.client as mqtt
 import cv2
 import RPi.GPIO as GPIO
 import makemos
+import busio
+from adafruit_htu21d import HTU21D
+import Adafruit_MCP3008
 
 trig = 20
 echo = 16
 led = 6
-
+sda = 2  # GPIO 핀 번호
+scl = 3  # GPIO 핀 번호
+i2c = busio.I2C(scl, sda)
+sensor = HTU21D(i2c)  # HTU21D장치를제어하는객체리턴
+mcp = Adafruit_MCP3008.MCP3008(clk=11, cs=8, miso=9, mosi=10)
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(led, GPIO.OUT)
@@ -26,9 +33,9 @@ def splitMos(message):
 
 
 # 작성
-def ledOnOff(message):
-    all_mos = makemos.makeMos(message)
+def LightLED(message):
     mos = splitMos(message)
+    all_mos = makemos.makeMos(message)
     print("check this out" + all_mos)
     for i in range(len(mos)):
         if mos[i] == '.':
@@ -69,5 +76,25 @@ def measureDistance():
     pass
 
 
+def getTemperature():
+    return float(sensor.temperature)  # HTU21D 장치로부터 온도 값 읽기
+
+
+def getHumidity():
+    return float(sensor.relative_humidity)  # HTU21D 장치로부터 습도 값 읽기
+
+
+def isBright():
+    return float(mcp.read_adc(0))
+
+
 if __name__ == "__main__":
-    ledOnOff("sos")
+    while True:
+        print("%3d" % getTemperature())
+        print("%3d" % getHumidity())
+        if mcp.read_adc(0) > 50:
+            print("Bright")
+        elif mcp.read_adc(0) <= 50:
+            print("Dark")
+        distance = measureDistance()
+        print("distance=%f" % distance)
