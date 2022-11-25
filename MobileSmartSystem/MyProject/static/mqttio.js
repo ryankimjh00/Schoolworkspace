@@ -29,17 +29,13 @@ function onConnect() {
     isConnected = true;
     console.log('onConnect')
     document.getElementById("messages").innerHTML = "<span>지금부터 생존 키트를 실행하여 주위 환경을 분석합니다.</span><br/>"
-    subscribe("ultrasonic")
-    subscribe("temperature")
-    subscribe("humidity")
-    subscribe("brightness")
 }
 
-var topicSave;
+let topicSave;
 
 function subscribe(topic) {
     if (client == null) return;
-    if (isConnected != true) {
+    if (isConnected !== true) {
         topicSave = topic;
         window.setTimeout("subscribe(topicSave)", 500);
         return
@@ -56,7 +52,7 @@ function publish(topic, msg) {
 }
 
 function unsubscribe(topic) {
-    if (client == null || isConnected != true) return;
+    if (client == null || isConnected !== true) return;
     // 토픽으로 subscribe 하고 있음을 id가 message인 DIV에 출력
     document.getElementById("messages").innerHTML += '<span>Unsubscribing to: ' + topic + '</span><br/>';
     client.unsubscribe(topic, null); // 브로커에 subscribe
@@ -75,27 +71,31 @@ function onMessageArrived(msg) { // 매개변수 msg는 도착한 MQTT 메시지
     console.log("onMessageArrived: " + msg.payloadString);
     if (msg.destinationName === "temperature") {  // publish된 메세지가 temperature이면 온도를 받아 innerHTML 값을 바꿔준다.
         if (Math.round(msg.payloadString < 10)) {
-            document.getElementById("temperature").innerHTML = '<span>' + Math.round(msg.payloadString) + '°C<br>기온이 너무 낮습니다. 저체온증에 걸리지 않게 체온을 높여주세요</span><br/>';
+            document.getElementById("temperature").innerHTML = '<span>' + Math.round(msg.payloadString) +
+                '°C<br>기온이 너무 낮습니다. 저체온증에 걸리지 않게 체온을 높여주세요</span><br/>';
         } else {
-            document.getElementById("temperature").innerHTML = '<span>' + Math.round(msg.payloadString) + '°C<br> 생존에 지장이 없는 온도입니다.</span><br/>';
+            document.getElementById("temperature").innerHTML = '<span>' + Math.round(msg.payloadString) +
+                '°C<br> 생존에 지장이 없는 온도입니다.</span><br/>';
         }
-    } else if (msg.destinationName === "humidity") { 
+    } else if (msg.destinationName === "humidity") {
         document.getElementById("humidity").innerHTML = '<span>' + Math.round(msg.payloadString) + '%</span><br/>';
     } else if (msg.destinationName === "brightness") { // publish된 메세지가 brightness이면 조도를 받아 innerHTML 값을 바꿔준다.
         if (Math.round(msg.payloadString) > 50) { // 조도가 50보다 높으면 밝으므로 led 가 잘 보이지 않느다는 경고를 보낸다.
-            document.getElementById("brightness").innerHTML = '<span> 너무 밝습니다. 최소 50lux까지 줄여주세요.<br> 현재 밝기: ' + Math.round(msg.payloadString) + 'lux</span><br/>';
+            document.getElementById("brightness").innerHTML = '<span> 너무 밝습니다. 최소 50lux까지 줄여주세요.<br> ' +
+                '현재 밝기: ' + Math.round(msg.payloadString) + 'lux</span><br/>';
         } else {
-            document.getElementById("brightness").innerHTML = '<span> led가 빛나기에 최적의 밝기입니다. 유지해주세요.<br> 현재 밝기: ' + Math.round(msg.payloadString) + 'lux</span><br/>';
+            document.getElementById("brightness").innerHTML = '<span> led가 빛나기에 최적의 밝기입니다. 유지해주세요.' +
+                '<br> 현재 밝기: ' + Math.round(msg.payloadString) + 'lux</span><br/>';
         }
     } else if (msg.destinationName === "ultrasonic") { //초음파를 받아 앞에 장애물이 있는지 확인하기.
-        if (Math.round(msg.payloadString) < 30) {
-            document.getElementById("ultrasonic").innerHTML = '<span> 앞에 장애물이 있는것 같습니다. 치워주세요.<br> 타겟과의 거리' + Math.round(msg.payloadString) + 'cm</span><br/>';
+        if (Math.round(msg.payloadString) < 30) { // 장애물과 거리가 30cm 이내이면
+            document.getElementById("ultrasonic").innerHTML = '<span> 앞에 장애물이 있는것 같습니다. 치워주세요.' +
+                '<br> 타겟과의 거리' + Math.round(msg.payloadString) + 'cm</span><br/>';
         } else {
-            document.getElementById("ultrasonic").innerHTML = '<span> 전방에 장애물이 없습니다. 모스 신호를 보내세요.<br> 타겟과의 거리' + Math.round(msg.payloadString) + '</span><br/>';
+            document.getElementById("ultrasonic").innerHTML = '<span> 전방에 장애물이 없습니다. 모스 신호를 보내세요.' +
+                '<br> 타겟과의 거리' + Math.round(msg.payloadString) + 'cm</span><br/>';
         }
     }
-    // 도착한 메시지 출력
-    // document.getElementById("messages").innerHTML = '<span>토픽 : ' + msg.destinationName + '  | ' + msg.payloadString + '</span><br/>';
 }
 
 // disconnection 버튼이 선택되었을 때 호출되는 함수
@@ -104,7 +104,7 @@ function startDisconnect() {
     document.getElementById("messages").innerHTML += '<span>Disconnected</span><br/>';
 }
 
-function getMessage() {
+function getMessage() { // 도착한 메세지 출력(subscribe, connect, disconnect 등)
     let message = document.getElementById("send")
     publish('led', message.value)
 }

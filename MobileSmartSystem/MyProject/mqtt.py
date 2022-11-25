@@ -1,4 +1,4 @@
-# publisher
+# publisher/subscriber
 
 import time
 import paho.mqtt.client as mqtt
@@ -23,7 +23,6 @@ def on_message(client, userdata, msg):
     MosWithGPIO.LightLED(msg)  # 사용자가 입력한 msg를 받아와 led 깜빡임을 만드는 함수실행
 
 
-
 broker_ip = "localhost"  # 현재 이 컴퓨터를 브로커로 설정
 
 client = mqtt.Client()
@@ -34,16 +33,16 @@ client.connect(broker_ip, 1883)
 client.loop_start()
 
 while True:
-    ultrasonic = MosWithGPIO.measureDistance() # 거리 측정 publish
+    ultrasonic = MosWithGPIO.measureDistance()  # 거리 측정 publish
     client.publish("ultrasonic", ultrasonic, qos=0)
 
-    temperature = MosWithGPIO.getTemperature()# 온도 측정 publish
+    temperature = MosWithGPIO.getTemperature()  # 온도 측정 publish
     client.publish("temperature", temperature, qos=0)
 
-    humidity = MosWithGPIO.getHumidity()# 습도 측정 publish
+    humidity = MosWithGPIO.getHumidity()  # 습도 측정 publish
     client.publish("humidity", humidity, qos=0)
 
-    brightness = MosWithGPIO.isBright()# 밝기 측정 publish
+    brightness = MosWithGPIO.isBright()  # 밝기 측정 publish
     client.publish("brightness", brightness, qos=0)
 
     time.sleep(1)

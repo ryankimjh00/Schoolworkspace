@@ -1,0 +1,54 @@
+        body {
+            background-color: #F0EBE3;
+            font-family: "JetBrains Mono", serif;
+        }
+
+        .button {
+            background-color: #7D9D9C;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0px 8px 6px -6px #666;
+            font-family: "JetBrains Mono", serif;
+        }
+
+        #connection-form {
+            border: 2px solid black;
+            padding: 10px;
+            background-color: #E4DCCF;
+            border-radius: 10px;
+        }
+
+        #Mos_Signal_activator {
+            border: 2px solid black;
+            padding: 10px;
+            background-color: #E4DCCF;
+            border-radius: 10px;
+        }
+
+        #subscribe-form {
+            border: 2px solid black;
+            padding: 10px;
+            background-color: #E4DCCF;
+            border-radius: 10px;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #tem, #hum {
+            width: 100px;
+            background-color: #576F72;
+            color: white;
+            font-weight: bold;
+        }
+
+        #bri, #ultra {
+            width: 500px;
+            background-color: #576F72;
+            color: white;
+            font-weight: bold;
+
+        }
