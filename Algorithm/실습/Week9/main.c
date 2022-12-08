@@ -78,7 +78,7 @@ int main(void) {
 	TreeNode* root = NULL, * p;
 
 
-	FILE* fp = ;
+	FILE* fp = NULL;
 
 	do {
 		printf("삽입(i), 파일 저장(S), 탐색(s), 삭제(d), 전체 출력(p),종료(q) ");

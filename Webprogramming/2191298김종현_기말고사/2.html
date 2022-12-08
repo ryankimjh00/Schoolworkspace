@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>김종현1</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<table>
+    자동차 가격표
+    <th> 자동차</th>
+    <th>가격</th>
+    <th>구매수량</th>
+    <tr>
+        <td>산타페</td>
+        <td>50</td>
+        <td><input type="text" id="santafe"></td>
+    </tr>
+    <tr>
+        <td>제네시스</td>
+        <td>100</td>
+        <td><input type="text" id="genesis"></td>
+    </tr>
+    <tr>
+        <td>테슬라</td>
+        <td>120</td>
+        <td><input type="text" id="tesla"></td>
+    </tr>
+    <th>
+        <button id="sum" onclick="sum()">합계</button>
+        <button id="clear" onclick="window.location.reload();">초기화</button>
+    </th>
+    <th></th>
+    <th>
+        <div id="number"></div>
+    </th>
+</table>
+<script>
+function sum(){
+    let sum = 0;
+    let santafe = document.getElementById("santafe").value;
+    let genesis = document.getElementById("genesis").value;
+    let tesla = document.getElementById("tesla").value;
+
+    sum = Number(santafe) + Number(genesis) + Number(tesla);
+    let number = document.getElementById("number");
+    number.innerHTML = String(sum);
+    console.log(sum);
+}
+
+</script>
+</body>
+</html>

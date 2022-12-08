@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>김종현1</title>
+</head>
+<body>
+<h3>세션 스토리지에 축구 선수 저장/검색</h3>
+<hr>
+이름 : <input id="item" type="text">
+등번호 : <input id="count" type="text">
+<button id="retrieve" onclick="retrieve()" type="button">검색</button>
+<button id="save" onclick="store()" type="button">저장</button>
+<div id="show"></div>
+<script>
+    let item = document.getElementById("item");
+    let count = document.getElementById("count");
+    let show = document.getElementById("show");
+    function retrieve() { // e는 이벤트 객체
+        if (!window.sessionStorage) {
+            alert("세션 스토리지를 지원하지 않습니다.");
+            return;
+        }
+        let val = sessionStorage.getItem(item.value);
+        if (val == null)
+            alert(item.value + "는 선수목록에 없습니다.");
+        else
+            show.innerHTML = item.value + "    " + val;
+    }
+
+    function store() { // e는 이벤트 객체
+        if (!window.sessionStorage) {
+            alert("세션 스토리지를 지원하지 않습니다.");
+            return;
+        }
+        sessionStorage.setItem(item.value, count.value);
+    }
+
+</script>
+</body>
+</html>

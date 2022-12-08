@@ -1,13 +1,7 @@
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Vector;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class Circle extends JFrame {
 
@@ -17,5 +11,10 @@ public class Circle extends JFrame {
 		setContentPane(new CirclePanel());
 		this.setBounds(400, 200, 380, 420);
 		setVisible(true);
+		JMenuBar mb = new JMenuBar();
+		JMenu fileMenu = new JMenu("File");
+		mb.add(fileMenu);
+		fileMenu.add(new JMenuItem("Save"));
+		this.setJMenuBar(mb);
 	}
 }

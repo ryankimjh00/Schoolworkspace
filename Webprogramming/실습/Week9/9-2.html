@@ -24,12 +24,10 @@
             img.setAttribute("height", "35px");
             img.onclick = moveImg;
             moveImg();
-
             function moveImg() {
                 s = Math.floor(Math.random() * tds.length);
                 tds[s].appendChild(img);
             }
-
         }
 
         function createTable() {

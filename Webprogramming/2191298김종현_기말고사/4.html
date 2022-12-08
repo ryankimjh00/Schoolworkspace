@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>김종현1</title>
+</head>
+<body>
+<canvas height="60" id="myCanvas" style="background-color: aliceblue;" width="400"></canvas>
+<br>
+<button id="move" onclick="start()">움직이기</button>
+<button id="stop" onclick="stop()">멈추기</button>
+<div>움직이기를 누르면 사각형이 나타납니다.</div>
+<script>
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+    let x = 10;
+    let dx = 2;
+    let timerID
+    function drawBall() {
+        ctx.beginPath();
+        ctx.rect(x, 20, 25, 25);
+        ctx.fillStyle = "violet";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBall();
+        x += dx;
+    }
+
+    function start(){
+        timerID = setInterval(draw, 200);
+    }
+    function stop(){
+        clearInterval(timerID);
+    }
+
+
+</script>
+</body>
+</html>

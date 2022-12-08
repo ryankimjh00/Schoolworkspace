@@ -3,10 +3,10 @@ C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\m
 C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(64,13): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
 C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(67,22): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char'과(와) 다릅니다.
 C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(67,18): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(702,5): error MSB6006: "CL.exe"이(가) 종료되었습니다(코드: 2).
-C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(81,13): error C2059: 구문 오류: ';'
 C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(96,13): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'FILE **'과(와) 다릅니다.
 C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(96,10): warning C4024: 'fopen': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
 C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(96,32): warning C4020: 'fopen': 실제 매개 변수가 너무 많습니다.
 C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(99,21): warning C4047: '함수': 'char'의 간접 참조 수준이 'char [100]'과(와) 다릅니다.
 C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(99,17): warning C4024: 'search': 형식 및 실제 매개 변수 2의 형식이 서로 다릅니다.
+C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\Week9\main.c(78,27): warning C4101: 'p' :참조되지 않은 지역 변수입니다.
+  Week9.vcxproj -> C:\Users\Jonghyeon Kim\Documents\GitHub\Schoolworkspace\Algorithm\실습\x64\Debug\Week9.exe

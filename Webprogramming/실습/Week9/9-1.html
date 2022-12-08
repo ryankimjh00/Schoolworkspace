@@ -23,15 +23,31 @@
             switch (e.key) {
                 case "ArrowRight":
                     index++;
+                    if (index > 15)
+                        index = 0;
+                    else if (index < 0)
+                        index = 15;
                     break;
                 case "ArrowLeft":
                     index--;
+                    if (index > 15)
+                        index = 0;
+                    else if (index < 0)
+                        index = 15;
                     break;
                 case "ArrowDown":
                     index += 4;
+                    if (index > 15)
+                        index = 0;
+                    else if (index < 0)
+                        index = 15;
                     break;
                 case "ArrowUp":
                     index -= 4;
+                    if (index > 15)
+                        index = 0;
+                    else if (index < 0)
+                        index = 15;
                     break;
             }
             tds[index].style.backgroundColor = "black";

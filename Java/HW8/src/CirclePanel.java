@@ -6,7 +6,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.util.Vector;
@@ -81,14 +80,5 @@ public class CirclePanel extends JComponent {
 			box = new Rectangle(pointList.get(i).x, pointList.get(i).y, width, height);
 		}
 	}
-	
-	public void save() {
 
-		try {
-			fis = new FileInputStream("data.bin");
-			bis = new BufferedInputStream(fis);
-			dis = new ObjectInputStream(bis);
-			
-		}
-	}
 }
