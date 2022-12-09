@@ -6,14 +6,19 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 class FileLoad implements ActionListener {
 
 	PaintPanel paintpanel;
 	BufferedImage bufferedImage;
+	JFrame frame;
 	JFileChooser jFileChooser = new JFileChooser();;
 
+//	public FileLoad(JFrame frame) {
+//		this.frame = frame;
+//	}
 	public FileLoad(PaintPanel paintpanel, BufferedImage bufferedImage) {
 		this.paintpanel = paintpanel;
 		this.bufferedImage = bufferedImage;
@@ -21,21 +26,20 @@ class FileLoad implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("JPEG", "jpeg", "jpg", "png", "bmp", "gif");
 		jFileChooser.addChoosableFileFilter(filter);
 
-		int rVal = jFileChooser.showOpenDialog(null);
-		if (rVal == JFileChooser.APPROVE_OPTION) {
+		int n = jFileChooser.showOpenDialog(null);
+		if (n == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = jFileChooser.getSelectedFile();
 			try {
 				paintpanel.bufferedImage = ImageIO.read(new File(selectedFile.getAbsolutePath()));
 				paintpanel.repaint();
-			} catch (IOException e1) {
-				e1.printStackTrace();
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
 			}
 		}
-		if (rVal == JFileChooser.CANCEL_OPTION) {
+		if (n == JFileChooser.CANCEL_OPTION) {
 
 		}
 
