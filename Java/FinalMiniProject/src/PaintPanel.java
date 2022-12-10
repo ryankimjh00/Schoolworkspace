@@ -49,16 +49,16 @@ class PaintPanel extends JPanel implements ActionListener, MouseListener, MouseM
 		JMenuItem save = new JMenuItem("save");
 		JMenuItem load = new JMenuItem("load");
 
-		this.add(load);
-		this.add(save);
 		this.add(penbtn);
 		this.add(linebtn);
 		this.add(rectbtn);
 		this.add(circlebtn);
 		this.add(eraserbtn);
-
+		this.add(save);
+		this.add(load);
 		add(colorCombo);
 		add(strokeCombo);
+
 		// 선의 색깔을 선택하는 콤보박스
 		colorCombo.setModel(new DefaultComboBoxModel<Color>(
 				new Color[] { Color.black, Color.red, Color.blue, Color.green, Color.yellow }));
